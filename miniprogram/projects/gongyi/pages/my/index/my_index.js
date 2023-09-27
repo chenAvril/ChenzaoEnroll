@@ -12,8 +12,7 @@ const setting = require('../../../../../setting/setting.js');
 const PassportBiz = require('../../../../../comm/biz/passport_biz.js');
 
 Page({
-	data: {
-	},
+	data: {},
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -22,7 +21,9 @@ Page({
 		if (PassportBiz.isLogin()) {
 			let user = {};
 			user.USER_NAME = PassportBiz.getUserName();
-			this.setData({ user });
+			this.setData({
+				user
+			});
 		}
 
 		ProjectBiz.initPage(this);
@@ -32,13 +33,13 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () { },
+	onReady: function () {},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: async function () {  
-		PassportBiz.loginSilenceMust(this); 
+	onShow: async function () {
+		PassportBiz.loginSilenceMust(this);
 		this._loadUser();
 	},
 
@@ -77,7 +78,7 @@ Page({
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
-	onPullDownRefresh: async function () { 
+	onPullDownRefresh: async function () {
 		await this._loadUser();
 		wx.stopPullDownRefresh();
 	},
@@ -93,7 +94,7 @@ Page({
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function () { },
+	onShareAppMessage: function () {},
 
 	url: function (e) {
 		pageHelper.url(e, this);
@@ -120,7 +121,7 @@ Page({
 				}
 
 			},
-			fail: function (res) { }
+			fail: function (res) {}
 		})
 	}
 })

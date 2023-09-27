@@ -5,8 +5,8 @@
  */
 
 const BaseProjectAdminService = require('./base_project_admin_service.js');
-const UserModel = require('../../model/user_model.js'); 
-const NewsModel = require('../../model/news_model.js');  
+const UserModel = require('../../model/user_model.js');
+// const NewsModel = require('../../model/news_model.js');  
 const EnrollModel = require('../../model/enroll_model.js');
 const constants = require('../../public/constants.js');
 const setupUtil = require('../../../../framework/utils/setup/setup_util.js');
@@ -20,12 +20,17 @@ class AdminHomeService extends BaseProjectAdminService {
 		let where = {};
 
 		let userCnt = await UserModel.count(where);
-		let newsCnt = await NewsModel.count(where);
-		let enrollCnt = await EnrollModel.count(where);  
-		return [
-			{ title: '用户数', cnt: userCnt },
-			{ title: '内容数', cnt: newsCnt },
-			{ title: '报名项目', cnt: enrollCnt },  
+		// let newsCnt = await NewsModel.count(where);
+		let enrollCnt = await EnrollModel.count(where);
+		return [{
+				title: '用户数量',
+				cnt: userCnt
+			},
+			// { title: '内容数', cnt: newsCnt },
+			{
+				title: '活动数量',
+				cnt: enrollCnt
+			},
 		]
 	}
 
@@ -40,9 +45,15 @@ class AdminHomeService extends BaseProjectAdminService {
 	async clearVouchData() {
 		await setupUtil.remove(constants.SETUP_HOME_VOUCH_KEY);
 
-		NewsModel.edit({}, { NEWS_VOUCH: 0 });
-		AlbumModel.edit({}, { ALBUM_VOUCH: 0 });
-		EnrollModel.edit({}, { ENROLL_VOUCH: 0 });
+		NewsModel.edit({}, {
+			NEWS_VOUCH: 0
+		});
+		AlbumModel.edit({}, {
+			ALBUM_VOUCH: 0
+		});
+		EnrollModel.edit({}, {
+			ENROLL_VOUCH: 0
+		});
 
 	}
 
@@ -53,14 +64,14 @@ class AdminHomeService extends BaseProjectAdminService {
 		let key = constants.SETUP_HOME_VOUCH_KEY;
 		let list = await setupUtil.get(key);
 		if (!list || !Array.isArray(list)) list = [];
- 
+
 		// 重复性判断
 		for (let k = 0; k < list.length; k++) {
 			if (list[k].id == node.id) {
 				// 已存在
 				list[k] = node;
 				return await setupUtil.set(key, list, 'vouch');
-			} 
+			}
 		}
 
 		// 赋值 
@@ -68,7 +79,7 @@ class AdminHomeService extends BaseProjectAdminService {
 		list.unshift(data);
 		await setupUtil.set(key, list, 'vouch');
 
-	}  
+	}
 
 	/**删除推荐数据 */
 	async delHomeVouch(id) {
@@ -85,7 +96,7 @@ class AdminHomeService extends BaseProjectAdminService {
 
 		return await setupUtil.set(key, newList, 'vouch');
 
-	}  
+	}
 }
 
 module.exports = AdminHomeService;

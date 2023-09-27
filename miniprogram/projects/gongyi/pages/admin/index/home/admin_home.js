@@ -39,6 +39,8 @@ Page({
 				title: 'bar'
 			}
 			let res = await cloudHelper.callCloudData('admin/home', {}, opts);
+
+			console.log(res)
 			this.setData({
 				stat: res
 			});
@@ -92,7 +94,7 @@ Page({
 				}
 
 			},
-			fail: function (res) { }
+			fail: function (res) {}
 		})
 	},
 
@@ -118,6 +120,6 @@ Page({
 			});
 		}
 		pageHelper.showConfirm('您确认退出?', callback);
-	}, 
+	},
 
 })

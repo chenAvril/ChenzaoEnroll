@@ -189,7 +189,7 @@ Page({
 						let title = encodeURIComponent(pageHelper.dataset(e, 'title'));
 						let qr = encodeURIComponent(pageHelper.dataset(e, 'qr')); 
 						wx.navigateTo({
-							url: `../../setup/qr/admin_setup_qr?title=${title}&qr=${qr}`,
+							url: `../../qr/admin_setup_qr?title=${title}&qr=${qr}`,
 						})
 						break;
 					}

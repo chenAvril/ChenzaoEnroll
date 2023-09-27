@@ -41,26 +41,6 @@ class PublicBiz extends BaseBiz {
 		return desc;
 	}
 
-	static isCacheList(key) {
-		key = key.toUpperCase();
-		if (setting.CACHE_IS_LIST)
-			return cacheHelper.get(key + '_LIST');
-		else
-			return false;
-	}
-
-	static removeCacheList(key) {
-		key = key.toUpperCase();
-		if (setting.CACHE_IS_LIST)
-			cacheHelper.remove(key + '_LIST');
-	}
-
-	static setCacheList(key, time = setting.CACHE_LIST_TIME) {
-		key = key.toUpperCase();
-		if (setting.CACHE_IS_LIST)
-			cacheHelper.set(key + '_LIST', 'TRUE', time);
-	}
-
 }
 
 module.exports = PublicBiz;

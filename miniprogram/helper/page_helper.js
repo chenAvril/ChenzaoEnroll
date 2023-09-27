@@ -777,33 +777,6 @@ function queryMulti(that, e, key, val, def) {
 	})
 }
 
-/**
- * 页面缓存
- * @param {*} key  
- * @param {*} that 
- * @param {*} listKey  数据项KEY
- */
-function cacheListExist(key, that, listKey = 'list') {
-	key = key.toUpperCase();
-	if (setting.CACHE_IS_LIST)
-		return cacheHelper.get(key + '_LIST') && that.data && that.data[listKey];
-	else
-		return false;
-}
-
-function cacheListRemove(key) {
-	key = key.toUpperCase();
-	if (setting.CACHE_IS_LIST)
-		cacheHelper.remove(key + '_LIST');
-}
-
-function cacheListSet(key, time = setting.CACHE_LIST_TIME) {
-	key = key.toUpperCase();
-	if (setting.CACHE_IS_LIST)
-		cacheHelper.set(key + '_LIST', 'TRUE', time);
-}
-
-
 module.exports = {
 	addPhoneCalendar,
 
@@ -875,10 +848,4 @@ module.exports = {
 	queryMulti,
 
 	clearTimer, //定时器销毁
-
-	//LIST数据缓存
-	cacheListExist,
-	cacheListRemove,
-	cacheListSet,
-
 }

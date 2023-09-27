@@ -31,7 +31,9 @@ function callCloudSumbitAsync(route, params = {}, options) {
 	return callCloud(route, params, options)
 }
 
-async function callCloudSumbit(route, params = {}, options = { title: '提交中...' }) {
+async function callCloudSumbit(route, params = {}, options = {
+	title: '提交中...'
+}) {
 	if (!helper.isDefined(options)) options = {
 		title: '提交中..'
 	}
@@ -279,7 +281,6 @@ async function getTempFileURLOne(fileID) {
 }
 
 async function transTempPics(imgList, dir, id, prefix = '') {
-
 	if (prefix && !prefix.endsWith('_')) prefix += '_';
 	if (!id) id = timeHelper.time('YMD');
 
@@ -376,8 +377,7 @@ async function transFormsTempPics(forms, dir, id, route) {
 		if (forms[k].type == 'image') {
 			forms[k].val = await transTempPics(forms[k].val, dir, id, 'image');
 			hasImageForms.push(forms[k]);
-		}
-		else if (forms[k].type == 'content') {
+		} else if (forms[k].type == 'content') {
 			let contentVal = forms[k].val;
 			for (let j in contentVal) {
 				if (contentVal[j].type == 'img') {

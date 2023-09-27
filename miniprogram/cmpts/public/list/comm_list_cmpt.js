@@ -57,8 +57,8 @@ Component({
 		isTotalMenu: {
 			type: Boolean, //是否整个搜索菜单显示
 			value: true
-    },
-    isSearchShow: {
+		},
+		isSearchShow: {
 			type: Boolean, //是否搜索菜单显示
 			value: true
 		},
@@ -154,8 +154,8 @@ Component({
 
 		pulldownMaskShow: false, //下拉菜单遮罩
 
-		startDate: '',//默认起始时间  
-		endDate: '',//默认结束时间 
+		startDate: '', //默认起始时间  
+		endDate: '', //默认结束时间 
 	},
 
 	lifetimes: {
@@ -176,7 +176,7 @@ Component({
 
 			//取得预置参数_params的选中状态 
 			let params = this.data._params;
-			if (params && params.sortType && helper.isDefined(params.sortVal)) { 
+			if (params && params.sortType && helper.isDefined(params.sortVal)) {
 				let sortMenus = this.data._menus;
 				for (let k = 0; k < sortMenus.length; k++) {
 					if (params.sortType == sortMenus[k].type && params.sortVal == sortMenus[k].value) {
@@ -186,7 +186,7 @@ Component({
 							sortMenusDefaultIndex: k
 						});
 						break;
-					} 
+					}
 				}
 			}
 
@@ -202,7 +202,8 @@ Component({
 	pageLifetimes: {
 		async show() {
 			// 页面被展示   
-			if (!this.data.isCache || !PublicBiz.isCacheList(this.data.type)) {
+			// || !PublicBiz.isCacheList(this.data.type)
+			if (!this.data.isCache) {
 				// 非缓存状态下或者 list缓存过期下加载
 				await this._getList(1);
 			}
@@ -259,8 +260,8 @@ Component({
 				dataList: this.data._dataList
 			});
 
-			if (this.data.isCache)
-				PublicBiz.setCacheList(this.data.type);
+			// if (this.data.isCache)
+			// PublicBiz.setCacheList(this.data.type);
 			if (page == 1) this.bindTopTap();
 
 

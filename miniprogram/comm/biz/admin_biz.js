@@ -59,6 +59,8 @@ class AdminBiz extends BaseBiz {
 
 		try {
 			await cloudHelper.callCloudSumbit('admin/login', params, opt).then(res => {
+
+				console.log('login', res)
 				if (res && res.data && res.data.name)
 					cacheHelper.set(constants.CACHE_ADMIN, res.data, constants.ADMIN_TOKEN_EXPIRE);
 

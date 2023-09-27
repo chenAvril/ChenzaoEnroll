@@ -12,7 +12,7 @@ const appCode = require('../../../framework/core/app_code.js');
 const config = require('../../../config/config.js');
 
 const AdminModel = require('../model/admin_model.js');
-const LogModel = require('../model/log_model.js'); 
+const LogModel = require('../model/log_model.js');
 
 class BaseAdminService extends BaseService {
 
@@ -20,18 +20,6 @@ class BaseAdminService extends BaseService {
 	/** 是否管理员 */
 	async isAdmin(token) {
 
-		let admin = {};
-			admin.ADMIN_NAME = 'demo-admin';
-			admin.ADMIN_DESC = '体验用户';
-			admin.ADMIN_ID = '1';
-			admin.ADMIN_PHONE = '13900000000';
-			admin.ADMIN_LOGIN_CNT = 0;
-			admin.ADMIN_LOGIN_TIME = '';
-			admin.ADMIN_TYPE = 0;
-			admin.ADMIN_STATUS = 1;
-			return admin;
-
-			
 		let where = {
 			ADMIN_TOKEN: token,
 			ADMIN_TOKEN_TIME: ['>', timeUtil.time() - config.ADMIN_LOGIN_EXPIRE * 1000], // token有效时间
@@ -72,7 +60,7 @@ class BaseAdminService extends BaseService {
 			LOG_TYPE: type
 		}
 		await LogModel.insert(data);
-	} 
+	}
 
 }
 
