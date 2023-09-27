@@ -1,7 +1,7 @@
 module.exports = { //gongyi公益培训
-	PROJECT_COLOR: '#07716B',
+	PROJECT_COLOR: '#C7114E',
 	NAV_COLOR: '#ffffff',
-	NAV_BG: '#07716B',
+	NAV_BG: '#C7114E',
 
 
 	// setup
@@ -30,9 +30,9 @@ module.exports = { //gongyi公益培训
 
 	ENROLL_NAME: '报名',
 	ENROLL_CATE: [
-		{ id: 1, title: '少儿培训' },
-		{ id: 2, title: '青年培训' },
-		{ id: 3, title: '老年培训' },
+		{ id: 1, title: '大团跑' },
+		{ id: 2, title: '庐阳分舵' },
+		{ id: 3, title: '天鹅湖分舵' },
 	],
 	ENROLL_FIELDS: [
 		{ mark: 'cover', title: '封面图片', type: 'image', len: 1, must: true },

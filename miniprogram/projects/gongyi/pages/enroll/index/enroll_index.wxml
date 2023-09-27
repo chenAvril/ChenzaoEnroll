@@ -1,7 +1,7 @@
 <view wx:if="{{!_params}}" class="margin-top load loading text-l load-project"></view>
 <block wx:else>
 
-	<cmpt-comm-list type="enroll-list" _params="{{_params}}" search="{{search}}" _menus="{{sortMenus}}" _items="{{sortItems}}" sortMenusDefaultIndex="0" route="enroll/list" topBottom="120" isTotalMenu="{{true}}" isSearchShow="{{true}}" placeholder="搜索" bind:list="bindCommListCmpt">
+	<cmpt-comm-list type="enroll-list" _params="{{_params}}" search="{{search}}" _menus="{{sortMenus}}" _items="{{sortItems}}" sortMenusDefaultIndex="0" route="enroll/list" topBottom="120" isTotalMenu="{{true}}" placeholder="搜索" bind:list="bindCommListCmpt">
 
 		<!-- List Begin -->
 		<view class="main-enroll-list">
@@ -16,9 +16,9 @@
 						<view class="right-line1 content-cut-three">{{item.ENROLL_OBJ.desc}}</view>
 						<view class="right-line2 text-grey">招生人数：{{item.ENROLL_MAX_CNT+'人'||'不限'}}</view>
 					</view>
-				</view> 
+				</view>
 			</view>
-		</view> 
+		</view>
 		<!-- List END -->
 
 		<!--load begin-->
@@ -27,11 +27,5 @@
 		<!--load end-->
 
 	</cmpt-comm-list>
-
-
-	<block wx:if="{{skin.IS_SUB}}">
-		<import src="../../tpls/menu_tpl.wxml" />
-		<template is="menuTpl" data="{{skin,curMenu:'enroll_index',returnHome}}" />
-	</block>
 
 </block>

@@ -1,17 +1,17 @@
 page {
 	background-color: #EFEFEF;
 
-	--projectColor: #07716B;
-	--projectColorLight: #07716B;
-	--projectCompareColor: #07716B;
+	--projectColor: #C7114E;
+	--projectColorLight: #C7114E;
+	--projectCompareColor: #C7114E;
 
 	/*#### 父组件日历颜色定义*/
 	/* 整体颜色 */
 	--calendarPageColor: #fff;
 	/* 加重颜色*/
-	--calendarMainColor: #07716B !important;
+	--calendarMainColor: #C7114E !important;
 	/* 加重的亮颜色 用于选中日期的数据小圆点 */
-	--calendarLightColor: #07716B;
+	--calendarLightColor: #C7114E;
 }
 
 .bg-admin {
@@ -52,7 +52,7 @@ page {
 }
 
 .load-project {
-	color: #07716B !important;
+	color: #C7114E !important;
 }
 
 .padding-project {

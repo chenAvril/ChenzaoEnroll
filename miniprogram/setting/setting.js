@@ -3,12 +3,8 @@ module.exports = {
 	CLOUD_ID: 'chenzao-1gphdxp1aa3f122d', //云服务id ,本地测试环境 
 
 	// #### 版本信息 
-	VER: 'build 2022.08.14',
-	COMPANY: '联系作者',
-
-	// #### 系统参数 
-	IS_SUB: false, //分包模式 
-	IS_DEMO: false, //是否演示版  
+	VER: '2023.09.27',
+	COMPANY: '合肥趁早',
 
 	MOBILE_CHECK: false, //手机号码是否真实性校验
 

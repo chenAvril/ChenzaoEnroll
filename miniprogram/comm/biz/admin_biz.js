@@ -112,8 +112,6 @@ class AdminBiz extends BaseBiz {
 			frontColor: '#ffffff',
 		});
 
-		if (setting.IS_SUB) wx.hideHomeButton();
-
 		let admin = cacheHelper.get(constants.CACHE_ADMIN);
 		if (!admin) {
 			return wx.showModal({

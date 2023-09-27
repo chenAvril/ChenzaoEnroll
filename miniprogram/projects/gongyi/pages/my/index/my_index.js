@@ -111,14 +111,12 @@ Page({
 				}
 
 				if (idx == 1) {
-					if (setting.IS_SUB) {
-						AdminBiz.adminLogin(this, 'admin', '123456');
-					} else {
-						wx.reLaunch({
-							url: '../../admin/index/login/admin_login',
-						});
-					}
 
+					AdminBiz.adminLogin(this, 'admin', '123456');
+
+					// wx.reLaunch({
+					// 	url: '../../admin/index/login/admin_login',
+					// });
 				}
 
 			},

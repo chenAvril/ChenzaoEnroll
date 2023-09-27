@@ -1,4 +1,4 @@
-<view class="main {{skin.IS_SUB?'sub-margin-bottom':''}}">
+<view class="main ">
 
 	<!--top area begin-->
 	<view class="upside upside-shadow" bindtap="url" data-url="{{user?'../edit/my_edit':'../reg/my_reg'}}">
@@ -37,7 +37,7 @@
 					<text class="icon-evaluate"></text>
 					<text class="text-black">我的报名</text>
 				</view>
-			</view> 
+			</view>
 
 			<view class="item arrow" bindtap="url" data-url="../fav/my_fav">
 				<view class="content">
@@ -52,34 +52,9 @@
 					<text class="text-black">历史浏览</text>
 				</view>
 			</view>
-		</view>
-		<!--base end -->
 
-		<!--sys begin -->
-		<view class="comm-list menu card-project shadow-project">
 
-			<view wx:if="{{skin.IS_SUB}}" class="item arrow" bindtap="bindSetTap">
-				<view class="content">
-					<text class="icon-settings"></text>
-					<text class="text-red text-bold ">系统后台管理<text class="text-grey text-normal">（点击试用）</text></text>
-				</view>
-			</view>
-
-			<view class="item arrow" bindtap="url" data-url="../../about/index/about_index?key=SETUP_CONTENT_ABOUT">
-				<view class="content">
-					<text class="icon-service"></text>
-					<text class="text-black">关于我们</text>
-				</view>
-			</view>
-
-			<view wx:if="{{skin.IS_SUB}}" class="item arrow" bindtap="url" data-url="/pages/home/about/home_about">
-				<view class="content">
-					<text class="icon-phone"></text>
-					<text class="text-orange">联系作者了解更多详情</text>
-				</view>
-			</view> 
-
-			<view wx:if="{{!skin.IS_SUB}}" class="item arrow" bindtap="bindSetTap">
+			<view class="item arrow" bindtap="bindSetTap">
 				<view class="content">
 					<text class="icon-settings"></text>
 					<text class="text-black">设置</text>
@@ -87,17 +62,10 @@
 			</view>
 
 		</view>
-		<!--sys end -->
+		<!--base end -->
 
 	</view>
 	<!--down area end-->
 
 </view>
 <view style="height:100rpx"></view>
-
-
-
-<block wx:if="{{skin.IS_SUB}}">
-	<import src="../../tpls/menu_tpl.wxml" />
-	<template is="menuTpl" data="{{curMenu:'my_index',returnHome:false}}" />
-</block>

@@ -15,14 +15,14 @@ class ProjectBiz extends BaseBiz {
 	 * 页面初始化    
 	 * @param {*} that  
 	 */
-	static initPage(that, { isSetNavColor = true } = {}) {   
+	static initPage(that) {   
 
 		let skin = {};
 		skin.NAV_BG = projectSetting.NAV_BG;
 		skin.NAV_COLOR = projectSetting.NAV_COLOR;
 		skin.PROJECT_COLOR = projectSetting.PROJECT_COLOR;
 		
-		PubilcBiz.initPageBase(that, { skin, isSetNavColor });
+		PubilcBiz.initPageBase(that, {skin});
 	}
 
 }

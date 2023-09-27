@@ -66,7 +66,7 @@ async function app(event, context) {
 		if (actionName.includes('#')) {
 			let actionNameArr = actionName.split('#');
 			actionName = actionNameArr[0];
-			if (actionNameArr[1] && config.IS_DEMO) {
+			if (actionNameArr[1]) {
 				console.log('### APP Before = ' + actionNameArr[1]);
 				return beforeApp(actionNameArr[1]);
 			}

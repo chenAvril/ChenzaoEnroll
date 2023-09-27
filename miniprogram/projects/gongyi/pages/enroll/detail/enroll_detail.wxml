@@ -2,7 +2,7 @@
 <view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
 
 <block wx:if="{{isLoad}}">
-	<cmpt-swiper mode="aspectFill" indicatorActiveColor="#07716B" height="350" images="{{enroll.ENROLL_OBJ.album}}" />
+	<cmpt-swiper mode="aspectFill" indicatorActiveColor="#C7114E" height="350" images="{{enroll.ENROLL_OBJ.album}}" />
 	<view class="main-enroll-detail">
 		<view class="title">{{enroll.ENROLL_TITLE}}</view>
 

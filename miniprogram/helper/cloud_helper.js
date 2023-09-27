@@ -279,7 +279,6 @@ async function getTempFileURLOne(fileID) {
 }
 
 async function transTempPics(imgList, dir, id, prefix = '') {
-	if (setting.IS_DEMO) return imgList; 
 
 	if (prefix && !prefix.endsWith('_')) prefix += '_';
 	if (!id) id = timeHelper.time('YMD');

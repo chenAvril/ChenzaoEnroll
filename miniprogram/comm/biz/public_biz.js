@@ -15,21 +15,13 @@ class PublicBiz extends BaseBiz {
 	 * @param {*} skin   
 	 * @param {*} that  
 	 */
-	static initPageBase(that, { skin, isSetNavColor = true }) {
+	static initPageBase(that, {skin}) {
 		if (skin) {
-			skin.IS_SUB = setting.IS_SUB;
 
-			if ((setting.IS_SUB)) {
-
-				wx.hideHomeButton();
-
-				// 顶部
-				if (isSetNavColor)
-					wx.setNavigationBarColor({
-						backgroundColor: skin.NAV_BG,
-						frontColor: skin.NAV_COLOR,
-					});
-			}
+			wx.setNavigationBarColor({
+				backgroundColor: skin.NAV_BG,
+				frontColor: skin.NAV_COLOR,
+			});
 
 			that.setData({
 				skin

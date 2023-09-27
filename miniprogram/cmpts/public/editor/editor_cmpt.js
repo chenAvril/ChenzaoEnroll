@@ -111,7 +111,7 @@ Component({
 							return pageHelper.showModal('图片大小不能超过 ' + maxSize + '兆');
 						}
 
-						if (!projectSetting.IS_DEMO && this.data.upDirectDir) {
+						if (this.data.upDirectDir) {
 							wx.showLoading({ title: '上传中' });
 							path = await cloudHelper.transTempPicOne(path, this.data.upDirectDir, '', false);
 							wx.hideLoading();

@@ -20,8 +20,7 @@ class BaseAdminService extends BaseService {
 	/** 是否管理员 */
 	async isAdmin(token) {
 
-		if (config.IS_DEMO) { // 演示版本
-			let admin = {};
+		let admin = {};
 			admin.ADMIN_NAME = 'demo-admin';
 			admin.ADMIN_DESC = '体验用户';
 			admin.ADMIN_ID = '1';
@@ -31,8 +30,8 @@ class BaseAdminService extends BaseService {
 			admin.ADMIN_TYPE = 0;
 			admin.ADMIN_STATUS = 1;
 			return admin;
-		}
 
+			
 		let where = {
 			ADMIN_TOKEN: token,
 			ADMIN_TOKEN_TIME: ['>', timeUtil.time() - config.ADMIN_LOGIN_EXPIRE * 1000], // token有效时间
