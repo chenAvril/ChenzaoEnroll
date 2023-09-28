@@ -89,9 +89,7 @@
 
 						<view bindtap="bindStatusMoreTap" data-id="{{item._id}}" class="btn margin-right-s">状态管理</view>
 
-						<view bindtap="bindMoreTap" data-id="{{item._id}}" data-qr="{{item.ENROLL_QR}}" data-title="{{item.ENROLL_TITLE}}" data-idx="{{index}}" class="btn margin-right-s">更多操作</view>
-
-						<!--<view bindtap="url" data-url="../../../enroll/detail/enroll_detail?id={{item._id}}" class="btn margin-right-s">预览</view>-->
+						<view bindtap="url" data-url="../../../enroll/detail/enroll_detail?id={{item._id}}" class="btn margin-right-s">预览</view>
 
 					</view>
 				</view>

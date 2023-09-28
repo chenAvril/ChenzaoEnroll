@@ -150,57 +150,6 @@ Page({
 		})
 	},
 
-	bindMoreTap: async function (e) {
-		if (!AdminBiz.isAdmin(this)) return;
-		let idx = pageHelper.dataset(e, 'idx');
-
-		let order = this.data.dataList.list[idx].ENROLL_ORDER;
-		let orderDesc = (order == 0) ? '取消置顶' : '置顶';
-
-		let vouch = this.data.dataList.list[idx].ENROLL_VOUCH;
-		let vouchDesc = (vouch == 0) ? '推荐到首页' : '取消首页推荐';
-
-		let itemList = ['预览', orderDesc, vouchDesc, '生成专属二维码'];
-
-		wx.showActionSheet({
-			itemList,
-			success: async res => {
-				switch (res.tapIndex) {
-					case 0: { //预览
-						let id = pageHelper.dataset(e, 'id');
-						wx.navigateTo({
-							url: '../../../enroll/detail/enroll_detail?id=' + id,
-						});
-						break;
-					}
-					case 1: { //置顶 
-						let sort = (order == 0) ? 9999 : 0;
-						e.currentTarget.dataset['sort'] = sort;
-						await this._setSort(e);
-						break;
-					}
-					case 2: { //上首页 
-						vouch = (vouch == 0) ? 1 : 0;
-						e.currentTarget.dataset['vouch'] = vouch;
-						await this._setVouch(e);
-						break;
-					}
-					case 3: { //二维码 
-						let title = encodeURIComponent(pageHelper.dataset(e, 'title'));
-						let qr = encodeURIComponent(pageHelper.dataset(e, 'qr')); 
-						wx.navigateTo({
-							url: `../../qr/admin_setup_qr?title=${title}&qr=${qr}`,
-						})
-						break;
-					}
-				}
-
-
-			},
-			fail: function (res) { }
-		})
-	},
-
 	_setSort: async function (e) {
 		if (!AdminBiz.isAdmin(this)) return;
 
@@ -325,8 +274,6 @@ Page({
 			{ label: '正常', type: 'status', value: 1 },
 			{ label: '停用', type: 'status', value: 0 },
 			{ label: '最新', type: 'sort', value: 'new' },
-			{ label: '首页推荐', type: 'vouch', value: 'vouch' },
-			{ label: '置顶', type: 'top', value: 'top' },
 		]
 		this.setData({
 			search: '',

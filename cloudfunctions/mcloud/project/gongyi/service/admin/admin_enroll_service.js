@@ -255,7 +255,10 @@ class AdminEnrollService extends BaseProjectAdminService {
 		enrollId,
 		status
 	}) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+
+		// this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+
+    return await exportUtil.exportDataExcel(EXPORT_ENROLL_JOIN_DATA_KEY,'111',2,[['1111','2222'],['3333','4444']]);
 
 	}
 

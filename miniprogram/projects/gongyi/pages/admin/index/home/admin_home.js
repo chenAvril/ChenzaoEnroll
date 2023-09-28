@@ -82,35 +82,6 @@ Page({
 		pageHelper.url(e, this);
 	},
 
-	bindMoreTap: function (e) {
-		let itemList = ['取消所有首页推荐'];
-		wx.showActionSheet({
-			itemList,
-			success: async res => {
-				let idx = res.tapIndex;
-
-				if (idx == 0) {
-					this._clearVouch();
-				}
-
-			},
-			fail: function (res) {}
-		})
-	},
-
-	_clearVouch: async function (e) {
-		let cb = async () => {
-			try {
-				await cloudHelper.callCloudSumbit('admin/clear_vouch').then(res => {
-					pageHelper.showSuccToast('操作成功');
-				})
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		pageHelper.showConfirm('您确认清除所有首页推荐？', cb)
-	},
-
 	bindExitTap: function (e) {
 
 		let callback = function () {
