@@ -48,6 +48,8 @@ class PassportBiz extends BaseBiz {
 	//  获取user id 
 	static getUserId() {
 		let token = cacheHelper.get(constants.CACHE_TOKEN);
+
+		console.log('token', token)
 		if (!token) return '';
 		return token.id || '';
 	}
@@ -83,8 +85,7 @@ class PassportBiz extends BaseBiz {
 				confirmText: '取消',
 				showCancel: false
 			});
-		}
-		else if (method == 'back') {
+		} else if (method == 'back') {
 			wx.showModal({
 				title: '温馨提示',
 				content,
@@ -127,12 +128,10 @@ class PassportBiz extends BaseBiz {
 				});
 
 				return true;
-			}
-			else if (mustLogin && result && helper.isDefined(result.data.token) && result.data.token && (result.data.token.status == 0 || result.data.token.status == 8 || result.data.token.status == 9)) {
+			} else if (mustLogin && result && helper.isDefined(result.data.token) && result.data.token && (result.data.token.status == 0 || result.data.token.status == 8 || result.data.token.status == 9)) {
 				let status = result.data.token.status;
 				return PassportBiz.loginStatusHandler(method, status);
-			}
-			else if (mustLogin && method == 'cancel') {
+			} else if (mustLogin && method == 'cancel') {
 				wx.showModal({
 					title: '温馨提示',
 					content: '此功能仅限注册用户',
@@ -141,7 +140,9 @@ class PassportBiz extends BaseBiz {
 					success(result) {
 						if (result.confirm) {
 							let url = pageHelper.fmtURLByPID('/pages/my/reg/my_reg') + '?retUrl=back';
-							wx.navigateTo({ url });
+							wx.navigateTo({
+								url
+							});
 
 						} else if (result.cancel) {
 
@@ -150,8 +151,7 @@ class PassportBiz extends BaseBiz {
 				});
 
 				return false;
-			}
-			else if (mustLogin && method == 'back') {
+			} else if (mustLogin && method == 'back') {
 				wx.showModal({
 					title: '温馨提示',
 					content: '此功能仅限注册用户',
@@ -161,14 +161,17 @@ class PassportBiz extends BaseBiz {
 						if (result.confirm) {
 							let retUrl = encodeURIComponent(pageHelper.getCurrentPageUrlWithArgs());
 							let url = pageHelper.fmtURLByPID('/pages/my/reg/my_reg') + '?retUrl=' + retUrl;
-							wx.redirectTo({ url });
+							wx.redirectTo({
+								url
+							});
 						} else if (result.cancel) {
 							let len = getCurrentPages().length;
 							if (len == 1) {
 								let url = pageHelper.fmtURLByPID('/pages/default/index/default_index');
-								wx.reLaunch({ url });
-							}
-							else
+								wx.reLaunch({
+									url
+								});
+							} else
 								wx.navigateBack();
 
 						}
@@ -176,8 +179,7 @@ class PassportBiz extends BaseBiz {
 				});
 
 				return false;
-			}
-			else if (mustLogin && method == 'back') {
+			} else if (mustLogin && method == 'back') {
 				wx.showModal({
 					title: '温馨提示',
 					content: '此功能仅限注册用户',
@@ -186,7 +188,9 @@ class PassportBiz extends BaseBiz {
 					success(result) {
 						if (result.confirm) {
 							let url = pageHelper.fmtURLByPID('/pages/my/reg/my_reg');
-							wx.reLaunch({ url });
+							wx.reLaunch({
+								url
+							});
 						} else if (result.cancel) {
 							wx.navigateBack();
 						}

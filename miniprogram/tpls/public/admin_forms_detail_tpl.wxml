@@ -1,7 +1,7 @@
 <template name="adminFormsDetailTpl">
 	<view class="admin-comm-list">
 		<view class="item">
-			<view class="info">
+			<view class="info margin-top: 10rpx;">
 				<view class="info-item info-item-solid" wx:key="key" wx:for="{{forms}}">
 					<view class="title">{{item.title}}</view>
 					<view class="mao">：</view>

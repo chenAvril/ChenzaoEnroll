@@ -113,8 +113,8 @@ Page({
 
 				if (idx == 1) {
 
-          // AdminBiz.adminLogin(this, 'admin', '123456');
-          // AdminBiz.adminLogin(this, 'user01', '123456');
+					// AdminBiz.adminLogin(this, 'admin', '123456');
+					// AdminBiz.adminLogin(this, 'user01', '123456');
 
 
 					wx.reLaunch({

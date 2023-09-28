@@ -22,7 +22,7 @@
 					</view>
 				</view>
 
-				<view class="info">
+				<view class="info margin-top: 10rpx;">
 					<view wx:if="{{item.USER_STATUS==8}}" class="info-item">
 						<view class="title">审核理由</view>
 						<view class="mao">：</view>
@@ -35,7 +35,7 @@
 					</view>
 
 					<view class="info-item">
-						<view class="title">注册</view>
+						<view class="title">注册时间</view>
 						<view class="mao">：</view>
 						<view class="content">{{item.USER_ADD_TIME}}</view>
 					</view>
@@ -49,7 +49,7 @@
 					<view class="oprt">
 
 						<block wx:if="{{userRegCheck}}">
-							<view wx:if="{{item.USER_STATUS==0}}" bindtap="bindStatusTap" data-status="1" data-idx="{{index}}" class="btn  margin-right-s text-green">审核通过</view> 
+							<view wx:if="{{item.USER_STATUS==0}}" bindtap="bindStatusTap" data-status="1" data-idx="{{index}}" class="btn  margin-right-s text-green">审核通过</view>
 
 							<view wx:if="{{item.USER_STATUS==0}}" bindtap="bindCheckTap" data-status="8" data-idx="{{index}}" class="btn  margin-right-s text-red">审核不过</view>
 						</block>
