@@ -43,7 +43,7 @@ class AdminMgrController extends BaseProjectAdminController {
 		let service = new AdminMgrService();
 		await service.delMgr(input.id, this._adminId);
 
-    super.logSys('删除了管理员')
+		// super.logSys('删除了管理员')
 	}
 
 	/** 管理员状态修改 */
@@ -60,9 +60,9 @@ class AdminMgrController extends BaseProjectAdminController {
 		let input = this.validateData(rules);
 
 		let service = new AdminMgrService();
-    await service.statusMgr(input.id, input.status, this._admin.ADMIN_PHONE);
-    
-    super.logSys('修改了管理员状态')
+		await service.statusMgr(input.id, input.status, this._admin.ADMIN_PHONE);
+
+		// super.logSys('修改了管理员状态')
 	}
 
 	/** 管理员列表 */
@@ -117,9 +117,9 @@ class AdminMgrController extends BaseProjectAdminController {
 		await contentCheck.checkTextMultiAdmin(input);
 
 		let service = new AdminMgrService();
-    await service.insertMgr(input);
-    
-    super.logSys('添加了管理员')
+		await service.insertMgr(input);
+
+		// super.logSys('添加了管理员')
 	}
 
 	/** 修改管理员 */
@@ -143,9 +143,9 @@ class AdminMgrController extends BaseProjectAdminController {
 		await contentCheck.checkTextMultiAdmin(input);
 
 		let service = new AdminMgrService();
-    await service.editMgr(input.id, input);
-    
-    super.logSys('修改了管理员信息')
+		await service.editMgr(input.id, input);
+
+		// super.logSys('修改了管理员信息')
 	}
 
 	/** 修改自己的密码 */
@@ -185,7 +185,7 @@ class AdminMgrController extends BaseProjectAdminController {
 		let service = new AdminMgrService();
 		return await service.getMgrDetail(input.id);
 
-	} 
+	}
 
 	async clearLog() {
 		await this.isAdmin();

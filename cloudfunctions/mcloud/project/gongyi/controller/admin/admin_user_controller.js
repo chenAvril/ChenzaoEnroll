@@ -87,13 +87,15 @@ class AdminUserController extends BaseProjectAdminController {
 		// 取得数据
 		let input = this.validateData(rules);
 
-		let title = await UserModel.getOneField({ USER_MINI_OPENID: input.id }, 'USER_NAME');
+		let title = await UserModel.getOneField({
+			USER_MINI_OPENID: input.id
+		}, 'USER_NAME');
 
 		let service = new AdminUserService();
 		await service.delUser(input.id);
 
-		if (title)
-			this.logUser('删除了用户「' + title + '」');
+		// if (title)
+		// 	this.logUser('删除了用户「' + title + '」');
 
 	}
 

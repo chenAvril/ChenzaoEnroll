@@ -51,12 +51,12 @@
 				<text class="text-black">修改我的管理员密码</text>
 			</view>
 		</view>
-		<view class="item arrow" bindtap="url" data-url="../../mgr/log/admin_log_list">
+		<!-- <view class="item arrow" bindtap="url" data-url="../../mgr/log/admin_log_list">
 			<view class="content">
 				<text class="icon-footprint text-brown"></text>
 				<text class="text-black">管理员操作日志</text>
 			</view>
-		</view>
+		</view> -->
 
 	</view>
 
