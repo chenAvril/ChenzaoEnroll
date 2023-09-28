@@ -128,7 +128,7 @@ Page({
 			{ label: '超管', type: 'type', value: 1 },
 			{ label: '普通', type: 'type', value: 0 },
 			{ label: '正常', type: 'status', value: 1 },
-			{ label: '停用', type: 'type', value: 0 }
+			{ label: '停用', type: 'status', value: 0 }
 		]
 
 		return {

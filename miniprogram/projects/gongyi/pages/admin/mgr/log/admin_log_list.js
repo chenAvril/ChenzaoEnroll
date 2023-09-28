@@ -83,7 +83,7 @@ Page({
 			{ label: '全部', type: '', value: '' },
 			{ label: '系统', type: 'type', value: 0 },
 			{ label: '用户', type: 'type', value: 1 },
-			{ label: '文章', type: 'type', value: 2 },
+			// { label: '文章', type: 'type', value: 2 },
 			{ label: '其他', type: 'type', value: 99 }
 		]
 

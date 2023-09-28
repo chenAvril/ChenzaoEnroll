@@ -1,5 +1,4 @@
 const AdminBiz = require('../../../../../../comm/biz/admin_biz.js');
-const PublicBiz = require('../../../../../../comm/biz/public_biz.js');
 const pageHelper = require('../../../../../../helper/page_helper.js');
 const cloudHelper = require('../../../../../../helper/cloud_helper.js');
 const validate = require('../../../../../../helper/validate.js');
@@ -72,9 +71,7 @@ Page({
 			await cloudHelper.callCloudSumbit('admin/mgr_insert', data).then(res => {
 
 				let callback = async function () {
-					PublicBiz.removeCacheList('admin-mgr');
 					wx.navigateBack();
-
 				}
 				pageHelper.showSuccToast('添加成功', 1500, callback);
 			});

@@ -155,7 +155,13 @@ class AdminMgrService extends BaseProjectAdminService {
 
 	/** 删除管理员 */
 	async delMgr(id, myAdminId) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    console.log('id',id)
+    console.log('myAdminId',myAdminId)
+
+    let where = {
+			_id: id
+		};
+    return await AdminModel.del(where);
 	}
 
 	/** 添加新的管理员 */
@@ -165,13 +171,26 @@ class AdminMgrService extends BaseProjectAdminService {
 		phone,
 		password
 	}) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
-
+    	// 入库
+		let data = {
+			ADMIN_NAME: name,
+			ADMIN_DESC: desc,
+			ADMIN_PHONE: phone,
+			ADMIN_PASSWORD: md5Lib.md5(password),
+		}
+    return await AdminModel.insert(data);
 	}
 
 	/** 修改状态 */
 	async statusMgr(id, status, myAdminId) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    let where = {
+      _id: id
+    };
+    let data = {
+      ADMIN_STATUS: status
+    }
+ 
+    return await AdminModel.edit(where,data);
 	} 
  
 
@@ -195,8 +214,19 @@ class AdminMgrService extends BaseProjectAdminService {
 		phone,
 		password
 	}) {
+      let where = {
+        _id: id
+      };
+      let data = {
+        ADMIN_NAME: name,
+        ADMIN_DESC: desc,
+        ADMIN_PHONE: phone,
+      }
+      if(password){
+        data.ADMIN_PASSWORD = md5Lib.md5(password)
+      }
 
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+      return await AdminModel.edit(where,data);
 	}
 
 	/** 修改自身密码 */

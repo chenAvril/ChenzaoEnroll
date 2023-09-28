@@ -4,7 +4,6 @@ const AdminEnrollBiz = require('../../../../biz/admin_enroll_biz.js');
 const EnrollBiz = require('../../../../biz/enroll_biz.js');
 const validate = require('../../../../../../helper/validate.js');
 const cloudHelper = require('../../../../../../helper/cloud_helper.js');
-const PublicBiz = require('../../../../../../comm/biz/public_biz.js');
 const projectSetting = require('../../../../public/project_setting.js');
 
 Page({
@@ -87,10 +86,7 @@ Page({
 			await cloudHelper.transFormsTempPics(forms, 'enroll/', enrollId, 'admin/enroll_update_forms');
 
 			let callback = async function () {
-				PublicBiz.removeCacheList('admin-enroll-list');
-				PublicBiz.removeCacheList('enroll-list');
 				wx.navigateBack();
-
 			}
 			pageHelper.showSuccToast('添加成功', 2000, callback);
 

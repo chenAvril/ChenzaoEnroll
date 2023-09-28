@@ -63,14 +63,14 @@ async function app(event, context) {
 		let actionName = routesArr[1];
 
 		// 事前处理
-		if (actionName.includes('#')) {
-			let actionNameArr = actionName.split('#');
-			actionName = actionNameArr[0];
-			if (actionNameArr[1]) {
-				console.log('### APP Before = ' + actionNameArr[1]);
-				return beforeApp(actionNameArr[1]);
-			}
-		}
+		// if (actionName.includes('#')) {
+		// 	let actionNameArr = actionName.split('#');
+		// 	actionName = actionNameArr[0];
+		// 	if (actionNameArr[1]) {
+		// 		console.log('### APP Before = ' + actionNameArr[1]);
+		// 		return beforeApp(actionNameArr[1]);
+		// 	}
+		// }
 
 		console.log('');
 		console.log('');

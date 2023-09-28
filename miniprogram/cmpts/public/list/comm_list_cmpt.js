@@ -1,6 +1,5 @@
 const cloudHelper = require('../../../helper/cloud_helper.js');
 const helper = require('../../../helper/helper.js');
-const PublicBiz = require('../../../comm/biz/public_biz.js');
 const pageHelper = require('../../../helper/page_helper.js');
 
 Component({
@@ -202,9 +201,7 @@ Component({
 	pageLifetimes: {
 		async show() {
 			// 页面被展示   
-			// || !PublicBiz.isCacheList(this.data.type)
 			if (!this.data.isCache) {
-				// 非缓存状态下或者 list缓存过期下加载
 				await this._getList(1);
 			}
 
@@ -260,10 +257,7 @@ Component({
 				dataList: this.data._dataList
 			});
 
-			// if (this.data.isCache)
-			// PublicBiz.setCacheList(this.data.type);
 			if (page == 1) this.bindTopTap();
-
 
 		},
 

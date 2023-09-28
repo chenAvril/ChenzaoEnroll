@@ -41,7 +41,8 @@ class BaseAdminService extends BaseService {
 			ADMIN_STATUS: 1,
 			ADMIN_TYPE: 1
 		}
-		let admin = await AdminModel.getOne(where, 'ADMIN_ID,ADMIN_PHONE,ADMIN_NAME,ADMIN_TYPE');
+    let admin = await AdminModel.getOne(where, 'ADMIN_ID,ADMIN_PHONE,ADMIN_NAME,ADMIN_TYPE,ADMIN_DESC');
+    
 		if (!admin)
 			this.AppError('超级管理员不存在', appCode.ADMIN_ERROR);
 
