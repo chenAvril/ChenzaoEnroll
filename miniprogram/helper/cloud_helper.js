@@ -112,7 +112,6 @@ function callCloud(route, params = {}, options) {
 				params
 			},
 			success: function (res) {
-        console.log('res',res)
 				if (res.result.code == CODE.LOGIC || res.result.code == CODE.DATA) {
 					console.log(res)
 					// 逻辑错误&数据校验错误 
