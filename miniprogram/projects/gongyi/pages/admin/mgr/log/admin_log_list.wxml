@@ -1,9 +1,9 @@
 <block wx:if="{{isAdmin&&isLoad}}">
 	<cmpt-comm-list source='admin' type="admin_log_list" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" sortMenusDefaultIndex="0" route="admin/log_list" topBottom="50" placeholder="搜索内容，管理员账号，姓名" bind:list="bindCommListCmpt">
 
-		<view slot="searchEnd">
+		<!-- <view slot="searchEnd">
 			<button bindtap="bindClearTap" class="btn radius bg-admin text-white  margin-right-s"><text class="icon-delete margin-right-xxs"></text>清空日志</button>
-		</view>
+		</view> -->
 
 		<!-- List Begin -->
 		<view class="admin-comm-list">
