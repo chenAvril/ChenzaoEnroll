@@ -28,8 +28,13 @@ EnrollModel.DB_STRUCTURE = {
 	ENROLL_CHECK_SET: 'int|true|default=0|comment=审核 0=不需要审核,1=需要审核',
 
 	ENROLL_MAX_CNT: 'int|true|default=20|comment=人数上限 0=不限',
-	ENROLL_START: 'int|false|comment=开始时间',
-	ENROLL_END: 'int|false|comment=截止时间',
+	ENROLL_START: 'int|false|comment=报名开始时间',
+	ENROLL_END: 'int|false|comment=报名截止时间',
+
+	ENROLL_START_TIME: 'int|false|comment=活动开始时间',
+	ENROLL_END_TIME: 'int|false|comment=活动截止时间',
+	ENROLL_COST: 'string|true|default=1|comment=报名费用',
+	ENROLL_ADDRESS: 'object|true|default={}',
 
 	ENROLL_ORDER: 'int|true|default=9999',
 	ENROLL_VOUCH: 'int|true|default=0',

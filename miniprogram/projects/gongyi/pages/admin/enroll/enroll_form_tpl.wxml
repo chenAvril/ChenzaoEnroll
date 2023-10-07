@@ -28,22 +28,53 @@
 	<view wx:if="{{formMaxCntFocus}}" class="hint-desc error">{{formMaxCntFocus}}</view>
 
 	<view class="form-group arrow" id="formStart">
-		<view class="title must">开始时间</view>
-		<cmpt-picker-time mark="formStart" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formStart" endYear="2025" item="{{formStart}}">
+		<view class="title must">报名开始时间</view>
+		<cmpt-picker-time mark="formStart" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formStart" endYear="2099" item="{{formStart}}">
 			<view class="form-text">{{formStart||'请选择'}}</view>
 		</cmpt-picker-time>
 	</view>
 	<view wx:if="{{formStartFocus}}" class="hint-desc error">{{formStartFocus}}</view>
 
 	<view class="form-group arrow" id="formEnd">
-		<view class="title must">截止时间</view>
-		<cmpt-picker-time mark="formEnd" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formEnd" endYear="2025" item="{{formEnd}}">
+		<view class="title must">报名截止时间</view>
+		<cmpt-picker-time mark="formEnd" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formEnd" endYear="2099" item="{{formEnd}}">
 			<view class="form-text">{{formEnd||'请选择'}}</view>
 		</cmpt-picker-time>
 	</view>
-	<view wx:if="{{formEndFocus}}" class="hint-desc error">{{formEndFocus}}</view> 
+	<view wx:if="{{formEndFocus}}" class="hint-desc error">{{formEndFocus}}</view>
+
+	<view class="form-group arrow" id="formStartTime">
+		<view class="title must">活动开始时间</view>
+		<cmpt-picker-time mark="formStartTime" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formStartTime" endYear="2099" item="{{formStartTime}}">
+			<view class="form-text">{{formStartTime||'请选择'}}</view>
+		</cmpt-picker-time>
+	</view>
+	<view wx:if="{{formStartTimeFocus}}" class="hint-desc error">{{formStartTimeFocus}}</view>
+
+	<view class="form-group arrow" id="formEndTime">
+		<view class="title must">活动截止时间</view>
+		<cmpt-picker-time mark="formEndTime" mode="fullminute" timeModeStep="5" bind:select="url" data-type="picker" data-item="formEndTime" endYear="2099" item="{{formEndTime}}">
+			<view class="form-text">{{formEndTime||'请选择'}}</view>
+		</cmpt-picker-time>
+	</view>
+	<view wx:if="{{formEndTimeFocus}}" class="hint-desc error">{{formEndTimeFocus}}</view>
+
+	<view class="form-group">
+		<view class="title must">报名费用<text class="text-grey text-normal margin-left-xs">(2位小数)</text></view>
+		<input placeholder="请填写报名费用" type="number" placeholder-class="phc" model:value="{{formCost}}" focus="{{formCostFocus}}" bindblur="inputMoney"></input>
+	</view>
+	<view wx:if="{{formCostFocus}}" class="hint-desc error">{{formCostFocus}}</view>
+
+	<view class="form-group">
+		<view class="title must">活动地址<text class="text-grey text-normal margin-left-xs">(点击选择)</text></view>
+	</view>
+	<view class="form-group">
+		<text class="text-grey text-normal margin-left-xs">{{formAddress}}</text>
+	</view>
+	<view wx:if="{{formAddressFocus}}" class="hint-desc error">{{formAddressFocus}}</view>
+
 </view>
- 
+
 <view class="form-box shadow">
 	<view class="form-group" id="formCheckSet">
 		<view class="title must text-orange">审核设置</view>
@@ -52,16 +83,16 @@
 	<view wx:if="{{formCheckSetFocus}}" class="hint-desc error">{{formCheckSetFocus}}</view>
 
 	<view class="form-group" id="formCancelSet">
-		<view class="title must">取消设置</view> 
-		<cmpt-picker mark="cancelSet" style="flex:1" model:item="{{formCancelSet}}" sourceDataStr="0=不可取消,1=随时可取消,2=截止前可取消,3=审核通过后不可取消" /> 
-	</view> 
-	<view wx:if="{{formCancelSetFocus}}" class="hint-desc error">{{formCancelSetFocus}}</view> 
+		<view class="title must">取消设置</view>
+		<cmpt-picker mark="cancelSet" style="flex:1" model:item="{{formCancelSet}}" sourceDataStr="0=不可取消,1=随时可取消,2=截止前可取消,3=审核通过后不可取消" />
+	</view>
+	<view wx:if="{{formCancelSetFocus}}" class="hint-desc error">{{formCancelSetFocus}}</view>
 
 	<view class="form-group" id="formEditSet">
 		<view class="title must">修改设置<text class="text-grey text-normal margin-left-xs">(填写人修改资料)</text></view>
-		<cmpt-picker mark="editSet" style="flex:1" model:item="{{formEditSet}}" sourceDataStr="0=不可修改,1=随时可修改,2=截止前可修改,3=审核通过后不可修改" /> 
-	</view>  
-	<view wx:if="{{formEditSetFocus}}" class="hint-desc error">{{formEditSetFocus}}</view> 
+		<cmpt-picker mark="editSet" style="flex:1" model:item="{{formEditSet}}" sourceDataStr="0=不可修改,1=随时可修改,2=截止前可修改,3=审核通过后不可修改" />
+	</view>
+	<view wx:if="{{formEditSetFocus}}" class="hint-desc error">{{formEditSetFocus}}</view>
 
 </view>
 

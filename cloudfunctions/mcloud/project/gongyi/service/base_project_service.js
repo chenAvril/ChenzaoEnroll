@@ -86,6 +86,8 @@ class BaseProjectService extends BaseService {
 					data.ENROLL_CATE_NAME = title;
 					data.ENROLL_START = this._timestamp;
 					data.ENROLL_END = this._timestamp + 86400 * 1000 * 30;
+					data.ENROLL_START_TIME = this._timestamp;
+					data.ENROLL_END_TIME = this._timestamp + 86400 * 1000 * 30;
 					data.ENROLL_OBJ = {
 						cover: [CONST_PIC],
 						desc: title + '1简介',

@@ -15,7 +15,7 @@ class EnrollController extends BaseProjectController {
 		let startTime = timeUtil.timestamp2Time(start, 'h:m');
 		let week = timeUtil.week(timeUtil.timestamp2Time(start, 'Y-M-D'));
 		week = '';
-		
+
 		if (end) {
 			let endDay = timeUtil.timestamp2Time(end, 'M月D日');
 			let endTime = timeUtil.timestamp2Time(end, 'h:m');
@@ -24,8 +24,7 @@ class EnrollController extends BaseProjectController {
 				return `${startDay} ${startTime} ${week}～${endDay} ${endTime}`;
 			else
 				return `${startDay} ${startTime}～${endTime} ${week}`;
-		}
-		else
+		} else
 			return `${startDay} ${startTime} ${week}`;
 	}
 
@@ -56,6 +55,8 @@ class EnrollController extends BaseProjectController {
 		for (let k = 0; k < list.length; k++) {
 			list[k].start = this._getTimeShow(list[k].ENROLL_START);
 			list[k].end = this._getTimeShow(list[k].ENROLL_END);
+			list[k].startTime = this._getTimeShow(list[k].ENROLL_START_TIME);
+			list[k].endTime = this._getTimeShow(list[k].ENROLL_END_TIME);
 			list[k].statusDesc = service.getJoinStatusDesc(list[k]);
 
 			if (list[k].ENROLL_OBJ && list[k].ENROLL_OBJ.intro)
@@ -83,6 +84,8 @@ class EnrollController extends BaseProjectController {
 		if (enroll) {
 			enroll.start = this._getTimeShow(enroll.ENROLL_START);
 			enroll.end = this._getTimeShow(enroll.ENROLL_END);
+			enroll.startTime = this._getTimeShow(enroll.ENROLL_START_TIME);
+			enroll.endTime = this._getTimeShow(enroll.ENROLL_END_TIME);
 			enroll.statusDesc = service.getJoinStatusDesc(enroll);
 		}
 

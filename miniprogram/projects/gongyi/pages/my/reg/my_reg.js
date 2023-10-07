@@ -133,7 +133,7 @@ Page({
 					if (projectSetting.USER_REG_CHECK)
 						pageHelper.showModal('注册完成，等待系统审核', '温馨提示', callback);
 					else
-					pageHelper.showSuccToast('注册成功', 1500, callback);
+						pageHelper.showSuccToast('注册成功', 1500, callback);
 				}
 			});
 		} catch (err) {

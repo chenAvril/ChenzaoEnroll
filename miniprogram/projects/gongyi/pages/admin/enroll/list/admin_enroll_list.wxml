@@ -18,7 +18,7 @@
 						<text wx:elif="{{item.ENROLL_STATUS==0}}" class="text-orange">「停用」</text>
 					</view>
 				</view>
- 
+
 
 				<view class="info">
 					<view class="info-item">
@@ -40,9 +40,27 @@
 					</view>
 
 					<view class="info-item">
-						<view class="title">起始时间</view>
+						<view class="title">报名时间</view>
 						<view class="mao">：</view>
 						<view class="content">{{item.ENROLL_START}}～{{item.ENROLL_END}}</view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">活动时间</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.ENROLL_START_TIME}}～{{item.ENROLL_END_TIME}}</view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">报名费用</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.ENROLL_COST}}</view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">活动地址</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.ENROLL_ADDRESS.address}}</view>
 					</view>
 
 					<view class="info-item">
@@ -68,16 +86,16 @@
 							<text wx:if="{{item.ENROLL_CANCEL_SET==1}}">随时可取消</text>
 							<text wx:if="{{item.ENROLL_CANCEL_SET==2}}">截止前可取消</text>
 							<text wx:if="{{item.ENROLL_CANCEL_SET==3}}">审核后不可取消</text>
-							<text class="margin-right-s margin-left-s">/</text> 
+							<text class="margin-right-s margin-left-s">/</text>
 							<text wx:if="{{item.ENROLL_EDIT_SET==0}}">不可修改</text>
 							<text wx:if="{{item.ENROLL_EDIT_SET==1}}">随时可修改</text>
-							<text wx:if="{{item.ENROLL_EDIT_SET==2}}">截止前可修改</text> 
-							<text wx:if="{{item.ENROLL_EDIT_SET==3}}">审核后不可修改</text> 
+							<text wx:if="{{item.ENROLL_EDIT_SET==2}}">截止前可修改</text>
+							<text wx:if="{{item.ENROLL_EDIT_SET==3}}">审核后不可修改</text>
 						</view>
 					</view>
 
 					<view class="info-item">
-						<view class="title">创建</view>
+						<view class="title">创建时间</view>
 						<view class="mao">：</view>
 						<view class="content">{{item.ENROLL_ADD_TIME}}</view>
 					</view>

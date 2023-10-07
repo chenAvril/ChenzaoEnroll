@@ -26,10 +26,14 @@ class AdminEnrollBiz extends BaseBiz {
 			formMaxCnt: '',
 			formStart: '',
 			formEnd: '',
- 
+			formStartTime: '',
+			formEndTime: '',
+			formCost: '1',
+			formAddress: '',
+
 			formCheckSet: 0,
 			formCancelSet: 1,
-			formEditSet: 1, 
+			formEditSet: 1,
 
 			formForms: [],
 
@@ -44,11 +48,15 @@ AdminEnrollBiz.CHECK_FORM = {
 	cateId: 'formCateId|must|id|name=分类',
 	order: 'formOrder|must|int|min:0|max:9999|name=排序号',
 	maxCnt: 'formMaxCnt|must|int|name=人数上限',
-	start: 'formStart|must|string|name=开始时间',
-	end: 'formEnd|must|string|name=截止时间',
+	start: 'formStart|must|string|name=报名开始时间',
+	end: 'formEnd|must|string|name=报名截止时间',
+	startTime: 'formStartTime|must|string|name=活动开始时间',
+	endTime: 'formEndTime|must|string|name=活动截止时间',
+	cost: 'formCost|must|String|name=活动费用',
+	address: 'formAddress|must|String|name=活动地址',
 	checkSet: 'formCheckSet|must|int|name=审核设置',
 	cancelSet: 'formCancelSet|must|int|name=取消设置',
-	editSet: 'formEditSet|must|int|name=修改设置',  
+	editSet: 'formEditSet|must|int|name=修改设置',
 	forms: 'formForms|array',
 	joinForms: 'formJoinForms|must|array|name=用户填写资料设置',
 };

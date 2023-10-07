@@ -43,7 +43,7 @@ class AdminEnrollService extends BaseProjectAdminService {
 			'ENROLL_ORDER': 'asc',
 			'ENROLL_ADD_TIME': 'desc'
 		};
-		let fields = 'ENROLL_TITLE,ENROLL_CATE_ID,ENROLL_CATE_NAME,ENROLL_EDIT_TIME,ENROLL_ADD_TIME,ENROLL_ORDER,ENROLL_STATUS,ENROLL_VOUCH,ENROLL_JOIN_CNT,ENROLL_MAX_CNT,ENROLL_START,ENROLL_END,ENROLL_EDIT_SET,ENROLL_CANCEL_SET,ENROLL_CHECK_SET,ENROLL_QR,ENROLL_OBJ';
+		let fields = 'ENROLL_TITLE,ENROLL_CATE_ID,ENROLL_CATE_NAME,ENROLL_EDIT_TIME,ENROLL_ADD_TIME,ENROLL_ORDER,ENROLL_STATUS,ENROLL_VOUCH,ENROLL_JOIN_CNT,ENROLL_MAX_CNT,ENROLL_START,ENROLL_END,ENROLL_START_TIME,ENROLL_END_TIME,ENROLL_COST,ENROLL_ADDRESS,ENROLL_EDIT_SET,ENROLL_CANCEL_SET,ENROLL_CHECK_SET,ENROLL_QR,ENROLL_OBJ';
 
 		let where = {};
 		where.and = {
@@ -53,7 +53,7 @@ class AdminEnrollService extends BaseProjectAdminService {
 		if (util.isDefined(search) && search) {
 			where.or = [{
 				ENROLL_TITLE: ['like', search]
-			},];
+			}, ];
 
 		} else if (sortType && util.isDefined(sortVal)) {
 			// 搜索菜单
@@ -102,6 +102,10 @@ class AdminEnrollService extends BaseProjectAdminService {
 		maxCnt,
 		start,
 		end,
+		startTime,
+		endTime,
+		cost,
+		address,
 		checkSet,
 		cancelSet,
 		editSet,
@@ -109,38 +113,44 @@ class AdminEnrollService extends BaseProjectAdminService {
 		forms,
 		joinForms,
 	}) {
-    
-    let data = {
-      ENROLL_TITLE: title,
-      ENROLL_CATE_ID: cateId,
-      ENROLL_CATE_NAME: cateName,
-      ENROLL_MAX_CNT: maxCnt,
-      ENROLL_START: timeUtil.time2Timestamp(start),
-      ENROLL_END: timeUtil.time2Timestamp(end),
-      ENROLL_CHECK_SET: checkSet,
-      ENROLL_CANCEL_SET: cancelSet,
-      ENROLL_EDIT_SET: editSet,
-      ENROLL_ORDER: order,
-      ENROLL_FORMS: forms,
-      ENROLL_JOIN_FORMS: joinForms
-    }
-        
-    let id = await EnrollModel.insert(data);
+
+		let data = {
+			ENROLL_TITLE: title,
+			ENROLL_CATE_ID: cateId,
+			ENROLL_CATE_NAME: cateName,
+			ENROLL_MAX_CNT: maxCnt,
+			ENROLL_START: timeUtil.time2Timestamp(start),
+			ENROLL_END: timeUtil.time2Timestamp(end),
+			ENROLL_START_TIME: timeUtil.time2Timestamp(startTime),
+			ENROLL_END_TIME: timeUtil.time2Timestamp(endTime),
+			ENROLL_COST: cost,
+			ENROLL_ADDRESS: address,
+			ENROLL_CHECK_SET: checkSet,
+			ENROLL_CANCEL_SET: cancelSet,
+			ENROLL_EDIT_SET: editSet,
+			ENROLL_ORDER: order,
+			ENROLL_FORMS: forms,
+			ENROLL_JOIN_FORMS: joinForms
+		}
+
+		let id = await EnrollModel.insert(data);
 		if (!id) return null;
-		return {'id':id};
+		return {
+			'id': id
+		};
 	}
 
 	/**删除数据 */
 	async delEnroll(id) {
-    let where = {
+		let where = {
 			_id: id
-    }
-        
-    let enroll = await EnrollModel.del(where);
+		}
+
+		let enroll = await EnrollModel.del(where);
 		if (!enroll) return null;
 
-    // 清空报名的数据
-    return await EnrollJoinModel.del({
+		// 清空报名的数据
+		return await EnrollJoinModel.del({
 			ENROLL_JOIN_ENROLL_ID: id
 		});
 
@@ -165,11 +175,11 @@ class AdminEnrollService extends BaseProjectAdminService {
 		id,
 		hasImageForms
 	}) {
-    let where = {
+		let where = {
 			_id: id
-    }
-        
-    let enroll = await EnrollModel.editForms(where, 'ENROLL_FORMS','ENROLL_OBJ',hasImageForms);
+		}
+
+		let enroll = await EnrollModel.editForms(where, 'ENROLL_FORMS', 'ENROLL_OBJ', hasImageForms);
 		if (!enroll) return null;
 
 		return enroll;
@@ -185,6 +195,10 @@ class AdminEnrollService extends BaseProjectAdminService {
 		maxCnt,
 		start,
 		end,
+		startTime,
+		endTime,
+		cost,
+		address,
 		checkSet,
 		cancelSet,
 		editSet,
@@ -192,26 +206,30 @@ class AdminEnrollService extends BaseProjectAdminService {
 		forms,
 		joinForms
 	}) {
-    let where = {
+		let where = {
 			_id: id
-    }
-    
-    let data = {
-      ENROLL_TITLE: title,
-      ENROLL_CATE_ID: cateId,
-      ENROLL_CATE_NAME: cateName,
-      ENROLL_MAX_CNT: maxCnt,
-      ENROLL_START: timeUtil.time2Timestamp(start),
-      ENROLL_END: timeUtil.time2Timestamp(end),
-      ENROLL_CHECK_SET: checkSet,
-      ENROLL_CANCEL_SET: cancelSet,
-      ENROLL_EDIT_SET: editSet,
-      ENROLL_ORDER: order,
-      ENROLL_FORMS: forms,
-      ENROLL_JOIN_FORMS: joinForms
-    }
-        
-    let enroll = await EnrollModel.edit(where, data);
+		}
+
+		let data = {
+			ENROLL_TITLE: title,
+			ENROLL_CATE_ID: cateId,
+			ENROLL_CATE_NAME: cateName,
+			ENROLL_MAX_CNT: maxCnt,
+			ENROLL_START: timeUtil.time2Timestamp(start),
+			ENROLL_END: timeUtil.time2Timestamp(end),
+			ENROLL_START_TIME: timeUtil.time2Timestamp(startTime),
+			ENROLL_END_TIME: timeUtil.time2Timestamp(endTime),
+			ENROLL_COST: cost,
+			ENROLL_ADDRESS: address,
+			ENROLL_CHECK_SET: checkSet,
+			ENROLL_CANCEL_SET: cancelSet,
+			ENROLL_EDIT_SET: editSet,
+			ENROLL_ORDER: order,
+			ENROLL_FORMS: forms,
+			ENROLL_JOIN_FORMS: joinForms
+		}
+
+		let enroll = await EnrollModel.edit(where, data);
 		if (!enroll) return null;
 
 		return enroll;
@@ -219,21 +237,23 @@ class AdminEnrollService extends BaseProjectAdminService {
 
 	/**修改状态 */
 	async statusEnroll(id, status) {
-    let where = {
+		let where = {
 			_id: id
-    }
-    
-    let data = {
-      ENROLL_STATUS: status
-    }
-        
-    let enroll = await EnrollModel.edit(where, data);
-    if (!enroll) return null;
-    
-    let fields = '*';
+		}
+
+		let data = {
+			ENROLL_STATUS: status
+		}
+
+		let enroll = await EnrollModel.edit(where, data);
+		if (!enroll) return null;
+
+		let fields = '*';
 		let enrollDetail = await EnrollModel.getOne(where, fields);
-    let service = new EnrollService();
-		return {'statusDesc':service.getJoinStatusDesc(enrollDetail)};
+		let service = new EnrollService();
+		return {
+			'statusDesc': service.getJoinStatusDesc(enrollDetail)
+		};
 	}
 
 
@@ -292,10 +312,10 @@ class AdminEnrollService extends BaseProjectAdminService {
 
 	/** 清空 */
 	async clearEnrollAll(enrollId) {
-    let where = {
+		let where = {
 			ENROLL_JOIN_ENROLL_ID: enrollId
 		};
-    return await EnrollJoinModel.del(where);
+		return await EnrollJoinModel.del(where);
 	}
 
 
@@ -324,7 +344,10 @@ class AdminEnrollService extends BaseProjectAdminService {
 
 		// this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
 
-    return await exportUtil.exportDataExcel(EXPORT_ENROLL_JOIN_DATA_KEY,'111',2,[['1111','2222'],['3333','4444']]);
+		return await exportUtil.exportDataExcel(EXPORT_ENROLL_JOIN_DATA_KEY, '111', 2, [
+			['1111', '2222'],
+			['3333', '4444']
+		]);
 
 	}
 

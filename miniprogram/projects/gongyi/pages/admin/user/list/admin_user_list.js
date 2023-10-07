@@ -78,7 +78,7 @@ Page({
 					title: '删除中'
 				}
 				await cloudHelper.callCloudSumbit('admin/user_del', params, opts).then(res => {
-					
+
 					pageHelper.delListNode(id, this.data.dataList.list, 'USER_MINI_OPENID');
 					this.data.dataList.total--;
 					this.setData({
@@ -139,16 +139,16 @@ Page({
 		}
 
 		let cb = async () => {
-		try {
-			await cloudHelper.callCloudSumbit('admin/user_status', params).then(res => {
+			try {
+				await cloudHelper.callCloudSumbit('admin/user_status', params).then(res => {
 					let sortIndex = this.selectComponent('#cmpt-comm-list').getSortIndex();
- 
+
 					if (sortIndex != -1 && sortIndex != 5 && !this.data.search) { // 全部或者检索的结果
 						dataList.list.splice(idx, 1);
 						dataList.total--;
-				this.setData({
-					dataList: this.data.dataList
-				});
+						this.setData({
+							dataList: this.data.dataList
+						});
 					} else {
 						let data1Name = 'dataList.list[' + idx + '].USER_CHECK_REASON';
 						let data2Name = 'dataList.list[' + idx + '].USER_STATUS';
@@ -164,37 +164,65 @@ Page({
 						curIdx: -1,
 					});
 					pageHelper.showSuccToast('操作成功');
-			});
-		} catch (e) {
-			console.log(e);
-		}
+				});
+			} catch (e) {
+				console.log(e);
+			}
 		}
 
 		if (status == 8) {
 			pageHelper.showConfirm('该用户审核不通过，用户修改资料后可重新提交审核', cb)
-		}
-		else
+		} else
 			pageHelper.showConfirm('确认执行此操作?', cb);
 	},
 
 	_getSearchMenu: async function () {
 
-		let sortItems1 = [
-			{ label: '注册时间', type: '', value: '' },
-			{ label: '注册时间从早到晚', type: 'sort', value: 'USER_ADD_TIME|asc' },
-			{ label: '注册时间从晚到早', type: 'sort', value: 'USER_ADD_TIME|desc' },
+		let sortItems1 = [{
+				label: '注册时间',
+				type: '',
+				value: ''
+			},
+			{
+				label: '注册时间从早到晚',
+				type: 'sort',
+				value: 'USER_ADD_TIME|asc'
+			},
+			{
+				label: '注册时间从晚到早',
+				type: 'sort',
+				value: 'USER_ADD_TIME|desc'
+			},
 		];
-		let sortMenus = [
-			{ label: '全部', type: '', value: '' },
-			{ label: '正常', type: 'status', value: 1 },
-			{ label: '禁用', type: 'status', value: 9 }
+		let sortMenus = [{
+				label: '全部',
+				type: '',
+				value: ''
+			},
+			{
+				label: '正常',
+				type: 'status',
+				value: 1
+			},
+			{
+				label: '禁用',
+				type: 'status',
+				value: 9
+			}
 
 		]
 
 		if (projectSetting.USER_REG_CHECK) {
-			sortMenus = sortMenus.concat([
-				{ label: '待审核', type: 'status', value: 0 },
-				{ label: '审核未过', type: 'status', value: 8 }
+			sortMenus = sortMenus.concat([{
+					label: '待审核',
+					type: 'status',
+					value: 0
+				},
+				{
+					label: '审核未过',
+					type: 'status',
+					value: 8
+				}
 			]);
 		}
 		this.setData({

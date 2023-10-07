@@ -55,14 +55,14 @@ class AdminUserService extends BaseProjectAdminService {
 
 		if (util.isDefined(search) && search) {
 			where.or = [{
-				USER_NAME: ['like', search]
-			},
-			{
-				USER_MOBILE: ['like', search]
-			},
-			{
-				USER_MEMO: ['like', search]
-			},
+					USER_NAME: ['like', search]
+				},
+				{
+					USER_MOBILE: ['like', search]
+				},
+				{
+					USER_MEMO: ['like', search]
+				},
 			];
 
 		} else if (sortType && util.isDefined(sortVal)) {
@@ -87,13 +87,24 @@ class AdminUserService extends BaseProjectAdminService {
 	}
 
 	async statusUser(id, status, reason) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			USER_MINI_OPENID: id
+		}
+
+		let data = {
+			USER_STATUS: status,
+			USER_CHECK_REASON: reason
+		}
+		return await UserModel.edit(where, data);
 	}
 
 	/**删除用户 */
 	async delUser(id) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		let where = {
+			USER_MINI_OPENID: id
+		}
 
+		return await UserModel.del(where);
 	}
 
 	// #####################导出用户数据

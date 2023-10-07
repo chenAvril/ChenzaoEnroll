@@ -3,7 +3,7 @@ const pageHelper = require('../../../../../../helper/page_helper.js');
 const AdminEnrollBiz = require('../../../../biz/admin_enroll_biz.js');
 const EnrollBiz = require('../../../../biz/enroll_biz.js');
 const validate = require('../../../../../../helper/validate.js');
-const cloudHelper = require('../../../../../../helper/cloud_helper.js'); 
+const cloudHelper = require('../../../../../../helper/cloud_helper.js');
 const formSetHelper = require('../../../../../../cmpts/public/form/form_set_helper.js');
 const projectSetting = require('../../../../public/project_setting.js');
 
@@ -34,22 +34,22 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () { },
+	onReady: function () {},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () { },
+	onShow: function () {},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function () { },
+	onHide: function () {},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function () { },
+	onUnload: function () {},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
@@ -80,12 +80,14 @@ Page({
 		};
 		let enroll = await cloudHelper.callCloudData('admin/enroll_detail', params, opt);
 		if (!enroll) {
-			this.setData({ isLoad: null });
+			this.setData({
+				isLoad: null
+			});
 			return;
 		};
 
 		if (!Array.isArray(enroll.ENROLL_JOIN_FORMS) || enroll.ENROLL_JOIN_FORMS.length == 0)
-		enroll.ENROLL_JOIN_FORMS = projectSetting.ENROLL_JOIN_FIELDS;
+			enroll.ENROLL_JOIN_FORMS = projectSetting.ENROLL_JOIN_FIELDS;
 
 		this.setData({
 			isLoad: true,
@@ -97,6 +99,10 @@ Page({
 			formMaxCnt: enroll.ENROLL_MAX_CNT,
 			formStart: enroll.ENROLL_START,
 			formEnd: enroll.ENROLL_END,
+			formStartTime: enroll.ENROLL_START_TIME,
+			formEndTime: enroll.ENROLL_END_TIME,
+			formCost: enroll.ENROLL_COST,
+			formAddress:enroll.ENROLL_ADDRESS,
 
 			formCheckSet: enroll.ENROLL_CHECK_SET,
 			formCancelSet: enroll.ENROLL_CANCEL_SET,
@@ -117,13 +123,13 @@ Page({
 		if (!data) return;
 
 		if (data.end < data.start) {
-			return pageHelper.showModal('截止时间不能早于开始时间');
+			return pageHelper.showModal('报名截止时间不能早于报名开始时间');
 		}
 
 		let forms = this.selectComponent("#cmpt-form").getForms(true);
 		if (!forms) return;
 		data.forms = forms;
-    data.cateName = EnrollBiz.getCateName(data.cateId);
+		data.cateName = EnrollBiz.getCateName(data.cateId);
 
 		try {
 			let enrollId = this.data.id;
@@ -138,6 +144,10 @@ Page({
 					'ENROLL_ORDER': data.order,
 					'ENROLL_START': data.start,
 					'ENROLL_END': data.end,
+					'ENROLL_START_TIME': data.startTime,
+					'ENROLL_END_TIME': data.endTime,
+					'ENROLL_COST': data.cost,
+					'ENROLL_ADDRESS':data.address,
 					'ENROLL_MAX_CNT': data.maxCnt,
 					'ENROLL_CHECK_SET': data.checkSet,
 					'ENROLL_CANCEL_SET': data.cancelSet,
@@ -163,6 +173,18 @@ Page({
 
 	url: function (e) {
 		pageHelper.url(e, this);
+	},
+
+	inputMoney: function (e) {
+		const exp = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+		exp.test(e.detail.value)
+		console.log(exp.test(e.detail.value))
+		if (!exp.test(e.detail.value)) {
+			pageHelper.showModal('请输入正确的金额');
+			this.setData({
+				formCost: ''
+			})
+		}
 	},
 
 	switchModel: function (e) {

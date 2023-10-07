@@ -34,22 +34,22 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () { },
+	onReady: function () {},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: async function () { },
+	onShow: async function () {},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function () { },
+	onHide: function () {},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function () { },
+	onUnload: function () {},
 
 	url: async function (e) {
 		pageHelper.url(e, this);
@@ -90,7 +90,7 @@ Page({
 					}
 				}
 			},
-			fail: function (res) { }
+			fail: function (res) {}
 		})
 	},
 
@@ -107,12 +107,12 @@ Page({
 				let opts = {
 					title: '处理中'
 				}
-				await cloudHelper.callCloudSumbit('admin/enroll_clear', params, opts).then(res => { 
+				await cloudHelper.callCloudSumbit('admin/enroll_clear', params, opts).then(res => {
 					let node = {
-						'ENROLL_JOIN_CNT': 0, 
+						'ENROLL_JOIN_CNT': 0,
 					}
 					pageHelper.modifyPrevPageListNodeObject(id, node, 1);
- 
+
 					pageHelper.showSuccToast('清空完成');
 				});
 			} catch (err) {
@@ -125,7 +125,7 @@ Page({
 
 	bindStatusMoreTap: async function (e) {
 		if (!AdminBiz.isAdmin(this)) return;
-		let itemList = ['启用', '停用 (不显示)', '删除'];
+		let itemList = ['启用', '停用 (不显示)', '删除当前报名'];
 		wx.showActionSheet({
 			itemList,
 			success: async res => {
@@ -146,7 +146,7 @@ Page({
 					}
 				}
 			},
-			fail: function (res) { }
+			fail: function (res) {}
 		})
 	},
 
@@ -241,7 +241,7 @@ Page({
 		try {
 			await cloudHelper.callCloudSumbit('admin/enroll_status', params).then(res => {
 
-        console.log('res',res)
+				console.log('res', res)
 				pageHelper.modifyListNode(id, this.data.dataList.list, 'ENROLL_STATUS', status, '_id');
 				pageHelper.modifyListNode(id, this.data.dataList.list, 'statusDesc', res.data.statusDesc, '_id');
 				this.setData({
@@ -257,24 +257,54 @@ Page({
 	_getSearchMenu: function () {
 		let cateIdOptions = EnrollBiz.getCateList();
 
-		let sortItem1 = [{ label: '分类', type: '', value: 0 }];
+		let sortItem1 = [{
+			label: '分类',
+			type: '',
+			value: 0
+		}];
 		sortItem1 = sortItem1.concat(cateIdOptions);
 
-		let sortItem2 = [
-			{ label: '排序', type: '', value: 0 },
-			{ label: '按报名人数', type: 'sort', value: 'ENROLL_JOIN_CNT|desc' },
-			{ label: '按开始时间', type: 'sort', value: 'ENROLL_START|desc' },
-			{ label: '按截止时间', type: 'sort', value: 'ENROLL_END|desc' },
+		let sortItem2 = [{
+				label: '排序',
+				type: '',
+				value: 0
+			},
+			{
+				label: '按报名人数',
+				type: 'sort',
+				value: 'ENROLL_JOIN_CNT|desc'
+			},
+			{
+				label: '按报名开始时间',
+				type: 'sort',
+				value: 'ENROLL_START|desc'
+			},
+			{
+				label: '按报名截止时间',
+				type: 'sort',
+				value: 'ENROLL_END|desc'
+			},
 		];
 
 		let sortItems = [];
 		if (sortItem1.length > 2) sortItems.push(sortItem1);
 		sortItems.push(sortItem2);
 
-		let sortMenus = [
-			{ label: '全部', type: '', value: '' },
-			{ label: '正常', type: 'status', value: 1 },
-			{ label: '停用', type: 'status', value: 0 },
+		let sortMenus = [{
+				label: '全部',
+				type: '',
+				value: ''
+			},
+			{
+				label: '正常',
+				type: 'status',
+				value: 1
+			},
+			{
+				label: '停用',
+				type: 'status',
+				value: 0
+			},
 			// { label: '最新', type: 'sort', value: 'new' },
 		]
 		this.setData({

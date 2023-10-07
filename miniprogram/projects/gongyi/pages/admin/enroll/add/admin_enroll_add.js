@@ -67,7 +67,7 @@ Page({
 		if (!data) return;
 
 		if (data.end < data.start) {
-			return pageHelper.showModal('截止时间不能早于开始时间');
+			return pageHelper.showModal('报名截止时间不能早于报名开始时间');
 		}
 
 		let forms = this.selectComponent("#cmpt-form").getForms(true);

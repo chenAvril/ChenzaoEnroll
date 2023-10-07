@@ -92,11 +92,13 @@ class AdminEnrollController extends BaseProjectAdminController {
 		let list = result.list;
 		for (let k = 0; k < list.length; k++) {
 			list[k].statusDesc = service.getJoinStatusDesc(list[k]);
-			
+
 			list[k].ENROLL_ADD_TIME = timeUtil.timestamp2Time(list[k].ENROLL_ADD_TIME, 'Y-M-D h:m:s');
 			list[k].ENROLL_START = timeUtil.timestamp2Time(list[k].ENROLL_START, 'Y-M-D h:m');
 			list[k].ENROLL_END = timeUtil.timestamp2Time(list[k].ENROLL_END, 'Y-M-D h:m');
-		
+			list[k].ENROLL_START_TIME = timeUtil.timestamp2Time(list[k].ENROLL_START_TIME, 'Y-M-D h:m');
+			list[k].ENROLL_END_TIME = timeUtil.timestamp2Time(list[k].ENROLL_END_TIME, 'Y-M-D h:m');
+
 			if (list[k].ENROLL_OBJ && list[k].ENROLL_OBJ.desc)
 				delete list[k].ENROLL_OBJ.desc;
 
@@ -119,8 +121,11 @@ class AdminEnrollController extends BaseProjectAdminController {
 			order: 'must|int|min:0|max:9999|name=排序号',
 
 			maxCnt: 'must|int|name=人数上限',
-			start: 'must|string|name=开始时间',
-			end: 'must|string|name=截止时间',
+			start: 'must|string|name=报名开始时间',
+			end: 'must|string|name=报名截止时间',
+			startTime: 'must|string|name=活动开始时间',
+			endTime: 'must|string|name=活动截止时间',
+			cost: 'must|double|name=活动费用',
 
 			checkSet: 'must|int|name=审核设置',
 			cancelSet: 'must|int|name=取消设置',
@@ -164,6 +169,8 @@ class AdminEnrollController extends BaseProjectAdminController {
 		if (enroll) {
 			enroll.ENROLL_START = timeUtil.timestamp2Time(enroll.ENROLL_START, 'Y-M-D h:m');
 			enroll.ENROLL_END = timeUtil.timestamp2Time(enroll.ENROLL_END, 'Y-M-D h:m');
+			enroll.ENROLL_START_TIME = timeUtil.timestamp2Time(enroll.ENROLL_START_TIME, 'Y-M-D h:m');
+			enroll.ENROLL_END_TIME = timeUtil.timestamp2Time(enroll.ENROLL_END_TIME, 'Y-M-D h:m');
 		}
 
 		return enroll;
@@ -181,8 +188,11 @@ class AdminEnrollController extends BaseProjectAdminController {
 			cateName: 'must|string|name=分类名称',
 
 			maxCnt: 'must|int|name=人数上限',
-			start: 'must|string|name=开始时间',
-			end: 'must|string|name=截止时间',
+			start: 'must|string|name=报名开始时间',
+			end: 'must|string|name=报名截止时间',
+			startTime: 'must|string|name=活动开始时间',
+			endTime: 'must|string|name=活动截止时间',
+			cost: 'must|string|name=活动费用',
 
 			checkSet: 'must|int|name=审核设置',
 			cancelSet: 'must|int|name=取消设置',
@@ -213,7 +223,7 @@ class AdminEnrollController extends BaseProjectAdminController {
 
 		// 数据校验
 		let rules = {
-			id: 'must|id', 
+			id: 'must|id',
 		};
 
 		// 取得数据

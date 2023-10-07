@@ -7,14 +7,26 @@
 		<view class="title">{{enroll.ENROLL_TITLE}}</view>
 
 		<view class="item">
-			<view class="item-title text-project"><text class="icon-titles" />招生进度 </view>
+			<view class="item-title text-project"><text class="icon-titles" />报名进度 </view>
 			<view class="line-process">
 				<view class="line-process-inner">
 					<view class="left">报名时间：</view>
 					<view class="right">{{enroll.start}} ~ {{enroll.end}}</view>
 				</view>
 				<view class="line-process-inner">
-					<view class="left">招生人数：</view>
+					<view class="left">活动时间：</view>
+					<view class="right">{{enroll.startTime}} ~ {{enroll.endTime}}</view>
+				</view>
+				<view class="line-process-inner">
+					<view class="left">活动费用：</view>
+					<view class="right">{{enroll.ENROLL_COST}}</view>
+				</view>
+				<view class="line-process-inner">
+					<view class="left">活动地址：</view>
+					<view class="right">{{enroll.ENROLL_ADDRESS.address}}</view>
+				</view>
+				<view class="line-process-inner">
+					<view class="left">报名人数：</view>
 					<view class="right">{{enroll.ENROLL_MAX_CNT+'人'||'不限'}}</view>
 				</view>
 				<view class="line-process-inner">
@@ -29,16 +41,16 @@
 			<view class="item-title text-project"><text class="icon-titles" />详细介绍</view>
 			<view class="item-desc">
 				<block wx:for="{{enroll.ENROLL_OBJ.intro}}" wx:key="key">
-				<view class="content" wx:if="{{item.type=='text'}}">
-					<text user-select="{{true}}">{{item.val}}</text>
-				</view>
+					<view class="content" wx:if="{{item.type=='text'}}">
+						<text user-select="{{true}}">{{item.val}}</text>
+					</view>
 
-				<view class="pics" wx:if="{{item.type=='img'}}">
-					<image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
-					</image>
-				</view>
-			</block>
-			
+					<view class="pics" wx:if="{{item.type=='img'}}">
+						<image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
+						</image>
+					</view>
+				</block>
+
 			</view>
 		</view>
 
