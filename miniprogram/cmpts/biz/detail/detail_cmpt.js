@@ -161,13 +161,7 @@ Component({
 		url: function (e) {
 			pageHelper.url(e, this);
 		},
-		bindHomeTap: function (e) {
-			let url = this.data.homeUrl;
-			if (!url)
-				url = pageHelper.fmtURLByPID('/pages/default/index/default_index');
 
-			wx.reLaunch({ url });
-		}, 
 		top: function (e) {
 			// 回页首事件
 			pageHelper.top();

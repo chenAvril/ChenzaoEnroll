@@ -1,7 +1,5 @@
 <view style="height:200rpx"></view>
 
-<view wx:if="{{doHome&&mode!='right'}}" bindtap="bindHomeTap" class="cmpt-fixed-home-btn"><text class="icon-home"></text><text style="font-size:22rpx;">首页</text></view>
-
 <!--回页首 begin-->
 <block wx:if="{{doTop}}">
 	<import src="../../../tpls/public/top_tpl.wxml" />

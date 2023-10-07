@@ -24,7 +24,7 @@
 		</view>
 	</view>
 
-	<view class="comm-list grid col-{{stat.length}}">
+	<view class="comm-list grid col-{{stat.length}}" style="margin-top: 0;">
 		<view wx:for="{{stat}}" wx:key="key" class="item">{{item.cnt||'0'}}<text class="text-black">{{item.title}}</text></view>
 	</view>
 

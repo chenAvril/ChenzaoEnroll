@@ -99,26 +99,50 @@ class AdminEnrollService extends BaseProjectAdminService {
 		title,
 		cateId,
 		cateName,
-
 		maxCnt,
 		start,
 		end,
-
 		checkSet,
 		cancelSet,
 		editSet,
-
 		order,
 		forms,
 		joinForms,
 	}) {
-
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    
+    let data = {
+      ENROLL_TITLE: title,
+      ENROLL_CATE_ID: cateId,
+      ENROLL_CATE_NAME: cateName,
+      ENROLL_MAX_CNT: maxCnt,
+      ENROLL_START: timeUtil.time2Timestamp(start),
+      ENROLL_END: timeUtil.time2Timestamp(end),
+      ENROLL_CHECK_SET: checkSet,
+      ENROLL_CANCEL_SET: cancelSet,
+      ENROLL_EDIT_SET: editSet,
+      ENROLL_ORDER: order,
+      ENROLL_FORMS: forms,
+      ENROLL_JOIN_FORMS: joinForms
+    }
+        
+    let id = await EnrollModel.insert(data);
+		if (!id) return null;
+		return {'id':id};
 	}
 
 	/**删除数据 */
 	async delEnroll(id) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    let where = {
+			_id: id
+    }
+        
+    let enroll = await EnrollModel.del(where);
+		if (!enroll) return null;
+
+    // 清空报名的数据
+    return await EnrollJoinModel.del({
+			ENROLL_JOIN_ENROLL_ID: id
+		});
 
 	}
 
@@ -141,7 +165,14 @@ class AdminEnrollService extends BaseProjectAdminService {
 		id,
 		hasImageForms
 	}) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    let where = {
+			_id: id
+    }
+        
+    let enroll = await EnrollModel.editForms(where, 'ENROLL_FORMS','ENROLL_OBJ',hasImageForms);
+		if (!enroll) return null;
+
+		return enroll;
 	}
 
 
@@ -151,26 +182,58 @@ class AdminEnrollService extends BaseProjectAdminService {
 		title,
 		cateId, // 二级分类 
 		cateName,
-
 		maxCnt,
 		start,
 		end,
-
 		checkSet,
 		cancelSet,
 		editSet,
-
 		order,
 		forms,
 		joinForms
 	}) {
+    let where = {
+			_id: id
+    }
+    
+    let data = {
+      ENROLL_TITLE: title,
+      ENROLL_CATE_ID: cateId,
+      ENROLL_CATE_NAME: cateName,
+      ENROLL_MAX_CNT: maxCnt,
+      ENROLL_START: timeUtil.time2Timestamp(start),
+      ENROLL_END: timeUtil.time2Timestamp(end),
+      ENROLL_CHECK_SET: checkSet,
+      ENROLL_CANCEL_SET: cancelSet,
+      ENROLL_EDIT_SET: editSet,
+      ENROLL_ORDER: order,
+      ENROLL_FORMS: forms,
+      ENROLL_JOIN_FORMS: joinForms
+    }
+        
+    let enroll = await EnrollModel.edit(where, data);
+		if (!enroll) return null;
 
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		return enroll;
 	}
 
 	/**修改状态 */
 	async statusEnroll(id, status) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    let where = {
+			_id: id
+    }
+    
+    let data = {
+      ENROLL_STATUS: status
+    }
+        
+    let enroll = await EnrollModel.edit(where, data);
+    if (!enroll) return null;
+    
+    let fields = '*';
+		let enrollDetail = await EnrollModel.getOne(where, fields);
+    let service = new EnrollService();
+		return {'statusDesc':service.getJoinStatusDesc(enrollDetail)};
 	}
 
 
@@ -229,7 +292,10 @@ class AdminEnrollService extends BaseProjectAdminService {
 
 	/** 清空 */
 	async clearEnrollAll(enrollId) {
-		this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+    let where = {
+			ENROLL_JOIN_ENROLL_ID: enrollId
+		};
+    return await EnrollJoinModel.del(where);
 	}
 
 

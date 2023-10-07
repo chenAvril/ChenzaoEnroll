@@ -240,6 +240,8 @@ Page({
 
 		try {
 			await cloudHelper.callCloudSumbit('admin/enroll_status', params).then(res => {
+
+        console.log('res',res)
 				pageHelper.modifyListNode(id, this.data.dataList.list, 'ENROLL_STATUS', status, '_id');
 				pageHelper.modifyListNode(id, this.data.dataList.list, 'statusDesc', res.data.statusDesc, '_id');
 				this.setData({
@@ -273,7 +275,7 @@ Page({
 			{ label: '全部', type: '', value: '' },
 			{ label: '正常', type: 'status', value: 1 },
 			{ label: '停用', type: 'status', value: 0 },
-			{ label: '最新', type: 'sort', value: 'new' },
+			// { label: '最新', type: 'sort', value: 'new' },
 		]
 		this.setData({
 			search: '',

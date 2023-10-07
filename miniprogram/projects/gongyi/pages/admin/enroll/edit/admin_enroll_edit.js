@@ -25,7 +25,7 @@ Page({
 		if (!pageHelper.getOptions(this, options)) return;
 
 		wx.setNavigationBarTitle({
-			title: projectSetting.ENROLL_NAME + '-修改',
+			title: '报名-修改',
 		});
 
 		this._loadDetail();
@@ -123,8 +123,7 @@ Page({
 		let forms = this.selectComponent("#cmpt-form").getForms(true);
 		if (!forms) return;
 		data.forms = forms;
-
-		data.cateName = EnrollBiz.getCateName(data.cateId);
+    data.cateName = EnrollBiz.getCateName(data.cateId);
 
 		try {
 			let enrollId = this.data.id;

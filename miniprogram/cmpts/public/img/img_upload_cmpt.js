@@ -78,7 +78,17 @@ Component({
 				count: this.data.imgMax - this.data.imgList.length, //默认9
 				mediaType: ['image'],
 				sizeType: ['compressed'], //可以指定是原图还是压缩图，默认二者都有
-				sourceType: ['album', 'camera'], //从相册选择
+        sourceType: ['album', 'camera'], //从相册选择
+        fail: (res)=>{
+          try {
+            // 返回⼤于等于0的整数值则表⽰包含此字符串，若不包含则返回-1
+            if(res.errMsg.indexOf('cancel') < 0){
+              pageHelper.showNoneToast('只能上传png、jpg、jpeg格式', 3000);
+            }
+          } catch (error) {
+            
+          }
+        },
 				success: async (res) => {
 					wx.showLoading({
 						title: '图片校验中',

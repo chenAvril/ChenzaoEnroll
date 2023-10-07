@@ -46,12 +46,12 @@
 				</view>
 			</view>
 
-			<view class="item arrow" bindtap="url" data-url="../foot/my_foot">
+			<!-- <view class="item arrow" bindtap="url" data-url="../foot/my_foot">
 				<view class="content">
 					<text class="icon-footprint"></text>
 					<text class="text-black">历史浏览</text>
 				</view>
-			</view>
+			</view> -->
 
 
 			<view class="item arrow" bindtap="bindSetTap">

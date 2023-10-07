@@ -59,7 +59,7 @@ class MultiModel extends Model {
 		let forms = await this.getOneField(where, formName, mustPID);
 		if (!forms) return;
 
-
+    
 		// 赋值
 		for (let k = 0; k < hasImageForms.length; k++) {
 			for (let j in forms) {
