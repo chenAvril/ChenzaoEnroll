@@ -167,18 +167,10 @@ class PassportBiz extends BaseBiz {
 						} else if (result.cancel) {
 							let len = getCurrentPages().length;
 							if (len == 1) {
-<<<<<<< HEAD
 								let url = pageHelper.fmtURLByPID('/pages/enroll/index/enroll_index');
 								wx.reLaunch({ url });
 							}
 							else
-=======
-								let url = pageHelper.fmtURLByPID('/pages/default/index/default_index');
-								wx.reLaunch({
-									url
-								});
-							} else
->>>>>>> master
 								wx.navigateBack();
 
 						}

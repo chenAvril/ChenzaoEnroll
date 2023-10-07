@@ -112,15 +112,8 @@ Page({
 				}
 
 				if (idx == 1) {
-
-<<<<<<< HEAD
           AdminBiz.adminLogin(this, 'admin', '123456');
           // AdminBiz.adminLogin(this, 'user01', '123456');
-=======
-					// AdminBiz.adminLogin(this, 'admin', '123456');
-					// AdminBiz.adminLogin(this, 'user01', '123456');
->>>>>>> master
-
 
 					// wx.reLaunch({
 					// 	url: '../../admin/index/login/admin_login',
