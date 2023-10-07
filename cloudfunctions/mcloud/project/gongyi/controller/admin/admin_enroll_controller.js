@@ -141,7 +141,7 @@ class AdminEnrollController extends BaseProjectAdminController {
 		let service = new AdminEnrollService();
 		let result = await service.insertEnroll(input);
 
-		this.logOther('添加了《' + input.title + '》');
+		// this.logOther('添加了《' + input.title + '》');
 
 		return result;
 
@@ -203,7 +203,7 @@ class AdminEnrollController extends BaseProjectAdminController {
 		let service = new AdminEnrollService();
 		let result = service.editEnroll(input);
 
-		this.logOther('修改了《' + input.title + '》');
+		// this.logOther('修改了《' + input.title + '》');
 
 		return result;
 	}
@@ -240,8 +240,8 @@ class AdminEnrollController extends BaseProjectAdminController {
 		let service = new AdminEnrollService();
 		await service.delEnroll(input.id);
 
-		if (title)
-			this.logOther('删除了《' + title + '》');
+		// if (title)
+		// 	this.logOther('删除了《' + title + '》');
 
 	}
 

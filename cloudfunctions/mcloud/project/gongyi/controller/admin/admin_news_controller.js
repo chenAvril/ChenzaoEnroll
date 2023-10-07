@@ -149,7 +149,7 @@ class AdminNewsController extends BaseProjectAdminController {
 		let service = new AdminNewsService();
 		let result = await service.insertNews(input);
 
-		this.logNews('添加了文章《' + input.title + '》');
+		// this.logNews('添加了文章《' + input.title + '》');
 
 		return result;
 
@@ -199,7 +199,7 @@ class AdminNewsController extends BaseProjectAdminController {
 		let service = new AdminNewsService();
 		let result = service.editNews(input);
 
-		this.logNews('修改了文章《' + input.title + '》');
+		// this.logNews('修改了文章《' + input.title + '》');
 
 		return result;
 	}
@@ -221,8 +221,8 @@ class AdminNewsController extends BaseProjectAdminController {
 		let service = new AdminNewsService();
 		await service.delNews(input.id);
 
-		if (title)
-			this.logNews('删除了文章《' + title + '》');
+		// if (title)
+		// 	this.logNews('删除了文章《' + title + '》');
 
 	}
 
