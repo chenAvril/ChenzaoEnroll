@@ -1,0 +1,8 @@
+{
+	"usingComponents": {
+		 
+	},
+	"navigationBarBackgroundColor": "#C7114E",
+	"navigationBarTextStyle": "white",   
+	"navigationBarTitleText": "名单-列表"
+}

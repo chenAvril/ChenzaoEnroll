@@ -24,16 +24,16 @@
 				<view class="line-process-inner">
 					<view class="left">活动地址：</view>
 					<view class="right margin-left-xs" style="display: flex;flex-direction: column;" bind:tap="watchLocation" data-location="{{enroll.ENROLL_ADDRESS}}">
-            <!-- {{enroll.ENROLL_ADDRESS.address}} -->
-            <text wx:if="{{enroll.ENROLL_ADDRESS.name != ''}}" class="text-normal">{{enroll.ENROLL_ADDRESS.name}}</text>
-            <text  wx:if="{{enroll.ENROLL_ADDRESS.address != ''}}" class="text-grey text-normal">{{enroll.ENROLL_ADDRESS.address}}</text>
-            <text wx:else class="text-normal">{{enroll.ENROLL_ADDRESS.latitude}},{{enroll.ENROLL_ADDRESS.longitude}}</text>
-          </view>
-          <image mode="aspectFit" style="height: 55rpx;width: 55rpx;" src="/projects/gongyi/images/location.png" />
+						<!-- {{enroll.ENROLL_ADDRESS.address}} -->
+						<text wx:if="{{enroll.ENROLL_ADDRESS.name != ''}}" class="text-normal">{{enroll.ENROLL_ADDRESS.name}}</text>
+						<text wx:if="{{enroll.ENROLL_ADDRESS.address != ''}}" class="text-grey text-normal">{{enroll.ENROLL_ADDRESS.address}}</text>
+						<text wx:else class="text-normal">{{enroll.ENROLL_ADDRESS.latitude}},{{enroll.ENROLL_ADDRESS.longitude}}</text>
+					</view>
+					<image mode="aspectFit" style="height: 55rpx;width: 55rpx;" src="/projects/gongyi/images/location.png" />
 				</view>
 				<view class="line-process-inner">
 					<view class="left">报名人数：</view>
-					<view class="right">{{enroll.ENROLL_MAX_CNT+'人'||'不限'}}</view>
+					<view class="right">{{enroll.ENROLL_JOIN_CNT}}<text class="margin-left-xxs margin-right-xxs">/</text>{{enroll.ENROLL_MAX_CNT==0?'不限':enroll.ENROLL_MAX_CNT+'人'}}</view>
 				</view>
 				<view class="line-process-inner">
 					<view class="left">报名状态：</view>
@@ -58,6 +58,10 @@
 				</block>
 
 			</view>
+		</view>
+
+		<view class="item">
+			<view class="item-title text-project" style="padding-bottom: 20rpx;" bind:tap="lookEnroll"><text class="icon-titles" />查看报名列表</view>
 		</view>
 
 	</view>

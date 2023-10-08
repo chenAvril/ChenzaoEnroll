@@ -1,0 +1,53 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
+
+<block wx:if="{{isAdmin&&isLoad}}">
+
+	<cmpt-comm-list source='admin' id="cmpt-comm-list" type="admin-enroll-join-list" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/enroll_join_list" topBottom="50" placeholder="搜索" sortMenusDefaultIndex="0" bind:list="bindCommListCmpt" isTotalMenu="{{false}}">
+
+		<!-- List Begin -->
+		<view class="join-list">
+
+			<view class="item" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="header">
+					<view class="left" style="font-weight: bold;">
+						{{index+1}}
+					</view>
+					<view class="right">
+						<text class="icon-calendar margin-right-xxs"></text><text class="">{{item.ENROLL_JOIN_ADD_TIME}}</text>
+					</view>
+				</view>
+
+				<view class="info">
+
+					<view class="info-item" style="margin-bottom: 10rpx;">
+						<view class="title text-admin">状态</view>
+						<view class="mao">：</view>
+						<view class="content">
+							<view wx:if="{{item.ENROLL_JOIN_STATUS==0}}" class="text-blue"><text class="icon-attention margin-right-xxs"></text>等待审核
+							</view>
+							<view wx:elif="{{item.ENROLL_JOIN_STATUS==1}}" class="text-green"><text class="icon-roundcheck margin-right-xxs"></text>填报成功
+							</view>
+							<view wx:elif="{{item.ENROLL_JOIN_STATUS==99}}" class="text-red"><text class="icon-roundclose margin-right-xxs"></text>审核不过</view>
+						</view>
+					</view>
+
+					<view class="info-item" wx:for="{{item.ENROLL_JOIN_FORMS}}" wx:key="key1" wx:for-item="form" wx:for-index="formindex" wx:if="{{formindex<1}}">
+						<view class="title">{{form.title}}</view>
+						<view class="mao">：</view>
+						<view class="content">{{form.val}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{dataList,skin:'text-grey',noHint:'暂无记录'}}" />
+		<!--load end-->
+
+	</cmpt-comm-list>
+
+
+</block>

@@ -72,7 +72,7 @@
 					<view class="info-item">
 						<view class="title">人数限定</view>
 						<view class="mao">：</view>
-						<view class="content">{{item.ENROLL_JOIN_CNT}}<text class="margin-left-xxs margin-right-xxs">/</text>{{item.ENROLL_MAX_CNT==0?'不限人数':item.ENROLL_MAX_CNT+'人'}} <text class="margin-left text-grey">(仅指填报成功+待审人数)</text></view>
+						<view class="content">{{item.ENROLL_JOIN_CNT}}<text class="margin-left-xxs margin-right-xxs">/</text>{{item.ENROLL_MAX_CNT==0?'不限':item.ENROLL_MAX_CNT+'人'}} <text class="margin-left text-grey">(仅指填报成功+待审人数)</text></view>
 					</view>
 
 					<view class="info-item">

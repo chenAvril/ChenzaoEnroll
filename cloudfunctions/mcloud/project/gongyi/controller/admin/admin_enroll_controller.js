@@ -125,8 +125,8 @@ class AdminEnrollController extends BaseProjectAdminController {
 			end: 'must|string|name=报名截止时间',
 			startTime: 'must|string|name=活动开始时间',
 			endTime: 'must|string|name=活动截止时间',
-      cost: 'must|double|name=报名费用',
-      address: 'must|object|name=活动地址',
+			cost: 'must|double|name=报名费用',
+			address: 'must|object|name=活动地址',
 
 			checkSet: 'must|int|name=审核设置',
 			cancelSet: 'must|int|name=取消设置',
@@ -193,8 +193,8 @@ class AdminEnrollController extends BaseProjectAdminController {
 			end: 'must|string|name=报名截止时间',
 			startTime: 'must|string|name=活动开始时间',
 			endTime: 'must|string|name=活动截止时间',
-      cost: 'must|string|name=活动费用',
-      address:'must|object|name=活动地址',
+			cost: 'must|string|name=活动费用',
+			address: 'must|object|name=活动地址',
 
 			checkSet: 'must|int|name=审核设置',
 			cancelSet: 'must|int|name=取消设置',
@@ -280,7 +280,7 @@ class AdminEnrollController extends BaseProjectAdminController {
 	//########################## 名单
 	/** 预约名单列表 */
 	async getEnrollJoinList() {
-		await this.isAdmin();
+		// await this.isAdmin();
 
 		// 数据校验
 		let rules = {

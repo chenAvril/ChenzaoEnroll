@@ -108,14 +108,14 @@ class AdminBiz extends BaseBiz {
 	}
 
 	//  登录状态判定
-	static isAdmin(that, isSuper = false) {
-		wx.setNavigationBarColor({ //顶部
-			backgroundColor: '#2499f2',
-			frontColor: '#ffffff',
-		});
+	static isAdmin(that, isSuper = false, isFlag = true) {
+		// wx.setNavigationBarColor({ //顶部
+		// 	backgroundColor: '#2499f2',
+		// 	frontColor: '#ffffff',
+		// });
 
 		let admin = cacheHelper.get(constants.CACHE_ADMIN);
-		if (!admin) {
+		if (!admin && isFlag) {
 			return wx.showModal({
 				title: '',
 				content: '登录已过期，请重新登录',
@@ -128,7 +128,6 @@ class AdminBiz extends BaseBiz {
 					return false;
 				}
 			});
-
 		}
 
 		if (isSuper && admin.type != 1) {

@@ -19,8 +19,8 @@ Page({
 		ProjectBiz.initPage(this);
 
 		if (!pageHelper.getOptions(this, options)) return;
-		this._loadDetail(); 
-  
+		this._loadDetail();
+
 	},
 
 	_loadDetail: async function () {
@@ -51,22 +51,22 @@ Page({
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
-	onReady: function () { },
+	onReady: function () {},
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () { },
+	onShow: function () {},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
-	onHide: function () { },
+	onHide: function () {},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
-	onUnload: function () { },
+	onUnload: function () {},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
@@ -79,7 +79,7 @@ Page({
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
-	onReachBottom: function () { },
+	onReachBottom: function () {},
 
 	bindJoinTap: async function (e) {
 		if (!await PassportBiz.loginMustCancelWin(this)) return;
@@ -98,19 +98,25 @@ Page({
 		}
 		await EnrollBiz.cancelMyEnrollJoin(this.data.enroll.myEnrollJoinId, cb);
 	},
- 
+
 	url: function (e) {
 		pageHelper.url(e, this);
 	},
 
-  watchLocation: function(e){
-    wx.openLocation({
-      latitude:e.currentTarget.dataset.location.latitude,
-      longitude:e.currentTarget.dataset.location.longitude,
-      name:e.currentTarget.dataset.location.name,
-      address:e.currentTarget.dataset.location.address,
-    })
-  },
+	watchLocation: function (e) {
+		wx.openLocation({
+			latitude: e.currentTarget.dataset.location.latitude,
+			longitude: e.currentTarget.dataset.location.longitude,
+			name: e.currentTarget.dataset.location.name,
+			address: e.currentTarget.dataset.location.address,
+		})
+	},
+
+	lookEnroll: function (e) {
+		wx.navigateTo({
+			url: '../join_list/enroll_join_list?enrollId=' + this.data.enroll._id + '&title=' + this.data.enroll.ENROLL_TITLE,
+		});
+	},
 
 	onPageScroll: function (e) {
 		// 回页首按钮

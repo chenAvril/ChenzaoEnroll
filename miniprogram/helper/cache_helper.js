@@ -26,7 +26,7 @@ function set(k, v, t = 86400 * 30) {
 		wx.removeStorageSync(k + TIME_SUFFIX);
 	}
 }
- 
+
 
 /**
  * 获取
@@ -36,22 +36,22 @@ function set(k, v, t = 86400 * 30) {
 function get(k, def = null) {
 	if (!k) return null;
 
-	let deadtime = wx.getStorageSync(k + TIME_SUFFIX); 
+	let deadtime = wx.getStorageSync(k + TIME_SUFFIX);
 	if (!deadtime) return def;
- 
-	deadtime = parseInt(deadtime); 
+
+	deadtime = parseInt(deadtime);
 	if (!deadtime) return def;
-	
+
 	if (deadtime) {
 		if (parseInt(deadtime) < Date.parse(new Date()) / 1000) {
-			wx.removeStorageSync(k); 
-			wx.removeStorageSync(k + TIME_SUFFIX); 
+			wx.removeStorageSync(k);
+			wx.removeStorageSync(k + TIME_SUFFIX);
 			return def;
 		}
-	} 
+	}
 
 	let res = wx.getStorageSync(k);
- 
+
 	if (helper.isDefined(res)) {
 		return res;
 	} else {
@@ -64,7 +64,7 @@ function get(k, def = null) {
  */
 function remove(k) {
 	if (!k) return null;
-	
+
 	wx.removeStorageSync(k);
 	wx.removeStorageSync(k + TIME_SUFFIX);
 }

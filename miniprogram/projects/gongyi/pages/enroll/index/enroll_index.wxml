@@ -14,7 +14,7 @@
 					<image mode="aspectFill" class="loading" src="{{item.ENROLL_OBJ.cover[0]}}" />
 					<view class="right">
 						<view class="right-line1 content-cut-three">{{item.ENROLL_OBJ.desc}}</view>
-						<view class="right-line2 text-grey">招生人数：{{item.ENROLL_MAX_CNT+'人'||'不限'}}</view>
+						<view class="right-line2 text-grey">报名人数：{{item.ENROLL_JOIN_CNT}}<text class="margin-left-xxs margin-right-xxs">/</text>{{item.ENROLL_MAX_CNT==0?'不限':item.ENROLL_MAX_CNT+'人'}}</view>
 					</view>
 				</view>
 			</view>
