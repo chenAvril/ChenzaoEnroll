@@ -30,7 +30,7 @@
 					<view wx:if="{{cateIdOptions.length>1}}" class="info-item">
 						<view class="title">分类</view>
 						<view class="mao">：</view>
-						<view class="content">『{{item.ENROLL_CATE_NAME}}』</view>
+						<view class="content">{{item.ENROLL_CATE_NAME}}</view>
 					</view>
 
 					<view class="info-item">
@@ -54,15 +54,21 @@
 					<view class="info-item">
 						<view class="title">报名费用</view>
 						<view class="mao">：</view>
-						<view class="content">{{item.ENROLL_COST}}</view>
+						<view class="content">{{item.ENROLL_COST}}<text class="margin-left-xxs margin-right-xxs">元</text></view>
 					</view>
 
 					<view class="info-item">
 						<view class="title">活动地址</view>
 						<view class="mao">：</view>
-						<view class="content">{{item.ENROLL_ADDRESS.address}}</view>
-					</view>
+						<view class="content" bind:tap="watchLocation" data-location="{{item.ENROLL_ADDRESS}}">
+              <!-- {{item.ENROLL_ADDRESS.address}} -->
+              <text wx:if="{{item.ENROLL_ADDRESS.name != ''}}" class="text-normal">{{item.ENROLL_ADDRESS.name}}</text>
+              <text  wx:if="{{item.ENROLL_ADDRESS.address != ''}}" class="text-grey text-normal">{{item.ENROLL_ADDRESS.address}}</text>
+              <text wx:else class="text-normal">{{item.ENROLL_ADDRESS.latitude}},{{item.ENROLL_ADDRESS.longitude}}</text>
+            </view>
+            <image mode="aspectFit" style="height: 40rpx;width: 40rpx;" src="/projects/gongyi/images/location.png" />
 
+					</view>
 					<view class="info-item">
 						<view class="title">人数限定</view>
 						<view class="mao">：</view>

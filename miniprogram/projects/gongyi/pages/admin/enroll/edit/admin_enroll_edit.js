@@ -185,7 +185,29 @@ Page({
 				formCost: ''
 			})
 		}
-	},
+  },
+  
+  chooseLocation:function(e){
+    let that = this
+    wx.chooseLocation({
+      latitude:that.data.formAddress.latitude,
+      longitude:that.data.formAddress.longitude,
+      success: function (res) {
+        let address = {
+          name:res.name,
+          address:res.address,
+          latitude:res.latitude,
+          longitude:res.longitude,
+        };
+        that.setData({
+          formAddress : address,
+        })
+      },
+      fail:function(res){
+          console.log(res)
+      }
+    })
+  },
 
 	switchModel: function (e) {
 		pageHelper.switchModel(this, e);

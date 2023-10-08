@@ -59,6 +59,14 @@ Page({
 		pageHelper.commListListener(this, e);
 	},
 
+  watchLocation: function(e){
+    wx.openLocation({
+      latitude:e.currentTarget.dataset.location.latitude,
+      longitude:e.currentTarget.dataset.location.longitude,
+      name:e.currentTarget.dataset.location.name,
+      address:e.currentTarget.dataset.location.address,
+    })
+  },
 
 	bindJoinMoreTap: async function (e) {
 		if (!AdminBiz.isAdmin(this)) return;

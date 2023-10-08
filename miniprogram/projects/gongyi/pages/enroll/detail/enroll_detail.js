@@ -103,6 +103,14 @@ Page({
 		pageHelper.url(e, this);
 	},
 
+  watchLocation: function(e){
+    wx.openLocation({
+      latitude:e.currentTarget.dataset.location.latitude,
+      longitude:e.currentTarget.dataset.location.longitude,
+      name:e.currentTarget.dataset.location.name,
+      address:e.currentTarget.dataset.location.address,
+    })
+  },
 
 	onPageScroll: function (e) {
 		// 回页首按钮

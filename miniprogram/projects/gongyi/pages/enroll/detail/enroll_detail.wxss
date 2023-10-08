@@ -58,7 +58,7 @@
 }
 
 .main-enroll-detail .line-process .line-process-inner .left {
-	width: 250rpx;
+	width: 200rpx;
 	font-weight: bold;
 }
 

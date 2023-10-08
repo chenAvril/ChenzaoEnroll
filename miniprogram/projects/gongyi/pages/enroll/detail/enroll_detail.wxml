@@ -2,7 +2,7 @@
 <view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
 
 <block wx:if="{{isLoad}}">
-	<cmpt-swiper mode="aspectFill" indicatorActiveColor="#C7114E" height="350" images="{{enroll.ENROLL_OBJ.album}}" />
+	<cmpt-swiper mode="aspectFill" indicatorActiveColor="#C7114E" height="400" images="{{enroll.ENROLL_OBJ.album}}" />
 	<view class="main-enroll-detail">
 		<view class="title">{{enroll.ENROLL_TITLE}}</view>
 
@@ -18,12 +18,18 @@
 					<view class="right">{{enroll.startTime}} ~ {{enroll.endTime}}</view>
 				</view>
 				<view class="line-process-inner">
-					<view class="left">活动费用：</view>
-					<view class="right">{{enroll.ENROLL_COST}}</view>
+					<view class="left">报名费用：</view>
+					<view class="right">{{enroll.ENROLL_COST}}<text class="margin-left-xxs margin-right-xxs">元</text></view>
 				</view>
 				<view class="line-process-inner">
 					<view class="left">活动地址：</view>
-					<view class="right">{{enroll.ENROLL_ADDRESS.address}}</view>
+					<view class="right margin-left-xs" style="display: flex;flex-direction: column;" bind:tap="watchLocation" data-location="{{enroll.ENROLL_ADDRESS}}">
+            <!-- {{enroll.ENROLL_ADDRESS.address}} -->
+            <text wx:if="{{enroll.ENROLL_ADDRESS.name != ''}}" class="text-normal">{{enroll.ENROLL_ADDRESS.name}}</text>
+            <text  wx:if="{{enroll.ENROLL_ADDRESS.address != ''}}" class="text-grey text-normal">{{enroll.ENROLL_ADDRESS.address}}</text>
+            <text wx:else class="text-normal">{{enroll.ENROLL_ADDRESS.latitude}},{{enroll.ENROLL_ADDRESS.longitude}}</text>
+          </view>
+          <image mode="aspectFit" style="height: 55rpx;width: 55rpx;" src="/projects/gongyi/images/location.png" />
 				</view>
 				<view class="line-process-inner">
 					<view class="left">报名人数：</view>

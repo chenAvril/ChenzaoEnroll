@@ -100,5 +100,39 @@ Page({
 		this.setData({
 			formJoinForms: e.detail,
 		});
-	},
+  },
+  
+  inputMoney: function (e) {
+		const exp = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+		exp.test(e.detail.value)
+		console.log(exp.test(e.detail.value))
+		if (!exp.test(e.detail.value)) {
+			pageHelper.showModal('请输入正确的金额');
+			this.setData({
+				formCost: ''
+			})
+		}
+  },
+  
+  chooseLocation:function(e){
+    let that = this
+    wx.chooseLocation({
+      latitude:that.data.formAddress.latitude,
+      longitude:that.data.formAddress.longitude,
+      success: function (res) {
+        let address = {
+          name:res.name,
+          address:res.address,
+          latitude:res.latitude,
+          longitude:res.longitude,
+        };
+        that.setData({
+          formAddress : address,
+        })
+      },
+      fail:function(res){
+          console.log(res)
+      }
+    })
+  },
 })

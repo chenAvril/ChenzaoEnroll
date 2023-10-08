@@ -13,6 +13,17 @@
 	border-bottom: 1rpx solid #eee;
 }
 
+.form-group-my {
+	/*background-color: var(--white);影响圆角*/
+	padding: 1rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+	min-height: 100rpx;
+	position: relative;
+	border-bottom: 1rpx solid #eee;
+}
+
 .form-group:last-child {
 	border-bottom: 0rpx solid #eee;
 }

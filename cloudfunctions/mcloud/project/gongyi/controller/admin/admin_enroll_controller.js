@@ -125,7 +125,8 @@ class AdminEnrollController extends BaseProjectAdminController {
 			end: 'must|string|name=报名截止时间',
 			startTime: 'must|string|name=活动开始时间',
 			endTime: 'must|string|name=活动截止时间',
-			cost: 'must|double|name=活动费用',
+      cost: 'must|double|name=报名费用',
+      address: 'must|object|name=活动地址',
 
 			checkSet: 'must|int|name=审核设置',
 			cancelSet: 'must|int|name=取消设置',
@@ -192,7 +193,8 @@ class AdminEnrollController extends BaseProjectAdminController {
 			end: 'must|string|name=报名截止时间',
 			startTime: 'must|string|name=活动开始时间',
 			endTime: 'must|string|name=活动截止时间',
-			cost: 'must|string|name=活动费用',
+      cost: 'must|string|name=活动费用',
+      address:'must|object|name=活动地址',
 
 			checkSet: 'must|int|name=审核设置',
 			cancelSet: 'must|int|name=取消设置',

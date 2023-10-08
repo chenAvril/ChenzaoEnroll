@@ -62,14 +62,17 @@
 	<view class="form-group">
 		<view class="title must">报名费用<text class="text-grey text-normal margin-left-xs">(2位小数)</text></view>
 		<input placeholder="请填写报名费用" type="number" placeholder-class="phc" model:value="{{formCost}}" focus="{{formCostFocus}}" bindblur="inputMoney"></input>
+    <text class="margin-left-xxs margin-right-xxs">元</text>
 	</view>
 	<view wx:if="{{formCostFocus}}" class="hint-desc error">{{formCostFocus}}</view>
 
-	<view class="form-group">
+	<view class="form-group" bind:tap="chooseLocation">
 		<view class="title must">活动地址<text class="text-grey text-normal margin-left-xs">(点击选择)</text></view>
 	</view>
-	<view class="form-group">
-		<text class="text-grey text-normal margin-left-xs">{{formAddress}}</text>
+	<view class="form-group-my">
+		<text wx:if="{{formAddress.name != ''}}" class="text-normal margin-left-xs">{{formAddress.name}}</text>
+    <text  wx:if="{{formAddress.address != ''}}" class="text-grey text-normal margin-left-xs">{{formAddress.address}}</text>
+    <text wx:else class="text-normal margin-left-xs">{{formAddress.latitude}},{{formAddress.longitude}}</text>
 	</view>
 	<view wx:if="{{formAddressFocus}}" class="hint-desc error">{{formAddressFocus}}</view>
 
