@@ -23,8 +23,32 @@ Page({
 	 */
 	onLoad: async function (options) {
 		ProjectBiz.initPage(this);
-		await this._loadDetail();
-	},
+    await this._loadDetail();
+
+    wx.login({
+      success(res) {
+        console.log('1',res);
+        if (res.code) {
+          let sessionKey = res.code
+
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            withCredentials:true,
+            success: function(res) {
+              console.log('2',res)
+              let encryptedData = res.encryptedData
+              let iv = res.iv
+
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+
+
+  },
 
 	_loadDetail: async function (e) { 
 

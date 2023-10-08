@@ -99,42 +99,51 @@ module.exports = { //gongyi公益培训
 		},
 
 	],
-	ENROLL_JOIN_FIELDS: [{
-			mark: 'name',
+	ENROLL_JOIN_FIELDS: [
+    {
+			mark: 'nickName',
 			type: 'text',
-			title: '姓名',
+			title: '昵称',
 			must: true,
 			max: 30,
 			edit: false
 		},
-		{
-			mark: 'sex',
-			title: '性别',
-			type: 'select',
-			selectOptions: ['男', '女'],
-			must: true,
-			edit: false
-		},
-		{
-			mark: 'birth',
-			type: 'date',
-			title: '出生日期',
-			must: true,
-			edit: true
-		},
-		{
-			mark: 'phone',
-			type: 'mobile',
-			title: '电话号码',
-			must: true,
-			edit: true
-		},
-		{
-			mark: 'address',
-			type: 'textarea',
-			title: '家庭住址',
-			must: true
-		},
+    // {
+		// 	mark: 'name',
+		// 	type: 'text',
+		// 	title: '姓名',
+		// 	must: true,
+		// 	max: 30,
+		// 	edit: false
+		// },
+		// {
+		// 	mark: 'sex',
+		// 	title: '性别',
+		// 	type: 'select',
+		// 	selectOptions: ['男', '女'],
+		// 	must: true,
+		// 	edit: false
+		// },
+		// {
+		// 	mark: 'birth',
+		// 	type: 'date',
+		// 	title: '出生日期',
+		// 	must: true,
+		// 	edit: true
+		// },
+		// {
+		// 	mark: 'phone',
+		// 	type: 'mobile',
+		// 	title: '电话号码',
+		// 	must: true,
+		// 	edit: true
+		// },
+		// {
+		// 	mark: 'address',
+		// 	type: 'textarea',
+		// 	title: '家庭住址',
+		// 	must: true
+		// },
 	],
 
 }
