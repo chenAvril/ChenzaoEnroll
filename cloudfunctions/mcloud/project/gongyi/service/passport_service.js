@@ -70,6 +70,22 @@ class PassportService extends BaseProjectService {
 		return await UserModel.getOne(where, fields);
 	}
 
+	/** 取得我的信息 */
+	async getMyInfo(data) {
+		// console.log('1', data)
+
+		// const pc = new WXBizDataCrypt('wx584ecaac6e4596e7', data.sessionKey);
+		// const result = pc.decryptData(data.encryptedData, data.iv);
+
+		// console.log('2', result)
+
+		// let where = {
+		// 	USER_MINI_OPENID: userId
+		// }
+		// let fields = 'USER_MOBILE,USER_NAME,USER_FORMS,USER_OBJ,USER_STATUS,USER_CHECK_REASON'
+		// return await UserModel.getOne(where, fields);
+	}
+
 	/** 修改用户资料 */
 	async editBase(userId, {
 		mobile,

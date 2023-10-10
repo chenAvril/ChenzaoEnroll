@@ -13,6 +13,7 @@ module.exports = {
 	'passport/login': 'passport_controller@login',
 	'passport/phone': 'passport_controller@getPhone',
 	'passport/my_detail': 'passport_controller@getMyDetail',
+	'passport/my_info': 'passport_controller@getMyInfo',
 	'passport/register': 'passport_controller@register',
 	'passport/edit_base': 'passport_controller@editBase',
 

@@ -23,41 +23,58 @@ Page({
 	 */
 	onLoad: async function (options) {
 		ProjectBiz.initPage(this);
-    await this._loadDetail();
-
-    wx.login({
-      success(res) {
-        console.log('1',res);
-        if (res.code) {
-          let sessionKey = res.code
-
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            withCredentials:true,
-            success: function(res) {
-              console.log('2',res)
-              let encryptedData = res.encryptedData
-              let iv = res.iv
-
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+		await this._loadDetail();
 
 
-  },
+		// https://blog.csdn.net/weixin_33557724/article/details/89601716
+		// wx.login({
+		// 	success(res) {
+		// 		console.log('1', res);
+		// 		if (res.code) {
+		// 			let sessionKey = res.code
 
-	_loadDetail: async function (e) { 
+		// 			// 已经授权，可以直接调用 getUserInfo 获取头像昵称
+		// 			wx.getUserInfo({
+		// 				success: async function (res) {
+		// 					console.log('2', res)
+		// 					let encryptedData = res.encryptedData
+		// 					let iv = res.iv
+
+		// 					wx.cloud.callFunction({
+		// 						name: 'token',
+		// 						data: {
+		// 							js_code: sessionKey, //传入参数js_code
+		// 							encryptedData: encryptedData, //传入参数encryptedData
+		// 							iv: iv //传入参数iv
+		// 						},
+		// 						success: function (res) {
+		// 							console.log('success', res); //查看云函数返回的内容。
+		// 						},
+		// 						fail: function (err) {
+		// 							console.log('Err: ' + JSON.stringify(err))
+		// 						}
+		// 					})
+		// 				}
+		// 			})
+		// 		} else {
+		// 			console.log('登录失败！' + res.errMsg)
+		// 		}
+		// 	}
+		// })
+
+
+	},
+
+	_loadDetail: async function (e) {
 
 		let opts = {
 			title: 'bar'
 		}
 		let user = await cloudHelper.callCloudData('passport/my_detail', {}, opts);
 		if (!user)
-			return wx.redirectTo({ url: '../reg/my_reg' });
+			return wx.redirectTo({
+				url: '../reg/my_reg'
+			});
 
 		this.setData({
 			isLoad: true,
@@ -123,7 +140,7 @@ Page({
 
 	bindSubmitTap: async function (e) {
 		try {
-			let data = this.data; 
+			let data = this.data;
 			// 数据校验 
 			data = validate.check(data, PassportBiz.CHECK_FORM, this);
 			if (!data) return;
@@ -137,7 +154,9 @@ Page({
 			}
 			await cloudHelper.callCloudSumbit('passport/edit_base', data, opts).then(res => {
 				let callback = () => {
-					wx.reLaunch({ url: '../index/my_index' });
+					wx.reLaunch({
+						url: '../index/my_index'
+					});
 				}
 				pageHelper.showSuccToast('修改成功', 1500, callback);
 			});

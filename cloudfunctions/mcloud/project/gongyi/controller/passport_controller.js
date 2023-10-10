@@ -16,6 +16,23 @@ class PassportController extends BaseProjectController {
 		return await service.getMyDetail(this._userId);
 	}
 
+	/** 取得我的信息 */
+	async getMyInfo() {
+
+		// 数据校验
+		let rules = {
+			sessionKey: 'must|string|name=登录token',
+			encryptedData: 'must|string|name=用户encryptedData',
+			iv: 'must|string|name=用户iv',
+		};
+
+		// 取得数据
+		let input = this.validateData(rules);
+
+		let service = new PassportService();
+		return await service.getMyInfo(input);
+	}
+
 	/** 获取手机号码 */
 	async getPhone() {
 
@@ -52,7 +69,7 @@ class PassportController extends BaseProjectController {
 		let service = new PassportService();
 		return await service.register(this._userId, input);
 	}
-	
+
 	/** 修改用户资料 */
 	async editBase() {
 		// 数据校验
