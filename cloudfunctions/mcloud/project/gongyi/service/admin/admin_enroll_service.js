@@ -361,17 +361,6 @@ class AdminEnrollService extends BaseProjectAdminService {
 		let size = 9999;
 
 		var result = await EnrollJoinModel.getList(where, fields, orderBy, page, size);
-		var list = result.list;
-
-		// if(list.length > 0){
-		// 	var forms = list[0].ENROLL_JOIN_FORMS;
-		// 	if(forms.length > 0){
-		// 		var titles = [];
-		// 		for(var form in forms){
-		// 			titles.add();
-		// 		}
-		// 	}
-		// }
 
 		var data = [];
 		result.list.forEach((item) => {
