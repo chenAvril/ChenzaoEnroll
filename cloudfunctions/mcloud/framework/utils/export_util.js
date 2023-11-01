@@ -77,7 +77,8 @@ async function exportDataExcel(key, title, total, data, options = {}) {
 
 	await setupUtil.remove(key);
 
-	let fileName = key + '_' + md5Lib.md5(key + config.CLOUD_ID);
+	// let fileName = key + '_' + md5Lib.md5(key + config.CLOUD_ID);
+	let fileName = title;
 	let xlsPath = util.getProjectId() + '/' + 'export/' + fileName + '.xlsx';
 
 	// 操作excel用的类库
@@ -85,7 +86,7 @@ async function exportDataExcel(key, title, total, data, options = {}) {
 
 	// 把数据保存到excel里
 	let buffer = await xlsx.build([{
-		name: title + timeUtil.time('Y-M-D'),
+		name: title + timeUtil.time('Y-M-D h:m:s'),
 		data,
 		options
 	}]);

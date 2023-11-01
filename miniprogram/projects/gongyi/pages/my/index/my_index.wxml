@@ -25,6 +25,13 @@
 
 		<!--base begin -->
 		<view class="comm-list menu card-project shadow-project">
+			<view class="item arrow" bindtap="url" data-url="../rank/rank">
+				<view class="content">
+					<text class="icon-rank"></text>
+					<text class="text-black">积分排名</text>
+				</view>
+			</view>
+
 			<view wx:if="{{user&&user.USER_STATUS!=9}}" class="item arrow" bindtap="url" data-url="../edit/my_edit">
 				<view class="content">
 					<text class="icon-edit"></text>

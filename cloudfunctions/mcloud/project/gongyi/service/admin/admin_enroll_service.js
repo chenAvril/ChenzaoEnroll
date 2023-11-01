@@ -338,16 +338,61 @@ class AdminEnrollService extends BaseProjectAdminService {
 
 	/**导出登记数据 */
 	async exportEnrollJoinDataExcel({
+		title,
 		enrollId,
 		status
 	}) {
 
-		// this.AppError('该功能暂不开放，如有需要请加作者微信：cclinux0730');
+		// var data = [
+		// 	['1111', '2222'],
+		// 	['3333', '4444']
+		// ];
 
-		return await exportUtil.exportDataExcel(EXPORT_ENROLL_JOIN_DATA_KEY, '111', 2, [
-			['1111', '2222'],
-			['3333', '4444']
-		]);
+		let where = {
+			ENROLL_JOIN_ENROLL_ID: enrollId,
+			ENROLL_JOIN_STATUS: Number(status)
+		};
+
+		let fields = '*';
+		let orderBy = {
+			'ENROLL_JOIN_LAST_TIME': 'desc'
+		};
+		let page = 1;
+		let size = 9999;
+
+		var result = await EnrollJoinModel.getList(where, fields, orderBy, page, size);
+		var list = result.list;
+
+		// if(list.length > 0){
+		// 	var forms = list[0].ENROLL_JOIN_FORMS;
+		// 	if(forms.length > 0){
+		// 		var titles = [];
+		// 		for(var form in forms){
+		// 			titles.add();
+		// 		}
+		// 	}
+		// }
+
+		var data = [];
+		result.list.forEach((item) => {
+			var titles = [];
+			var values = [];
+			item.ENROLL_JOIN_FORMS.forEach((form) => {
+				titles.push(form.title);
+				values.push(form.val + '');
+			});
+
+			if (data.length == 0) {
+				data.push(titles);
+			}
+			data.push(values);
+		});
+
+		var total = 0;
+		if (data.length > 0) {
+			total = data.length - 1;
+		}
+		return await exportUtil.exportDataExcel(EXPORT_ENROLL_JOIN_DATA_KEY, title, total, data);
 
 	}
 

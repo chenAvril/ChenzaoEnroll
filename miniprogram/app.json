@@ -1,6 +1,6 @@
 {
 	"pages": [
-    "projects/gongyi/pages/enroll/index/enroll_index",
+		"projects/gongyi/pages/enroll/index/enroll_index",
 		"projects/gongyi/pages/enroll/join/enroll_join",
 		"projects/gongyi/pages/enroll/detail/enroll_detail",
 		"projects/gongyi/pages/enroll/my_join_list/enroll_my_join_list",
@@ -29,9 +29,10 @@
 		"projects/gongyi/pages/admin/enroll/add/admin_enroll_add",
 		"projects/gongyi/pages/admin/enroll/edit/admin_enroll_edit",
 		"projects/gongyi/pages/admin/enroll/join_list/admin_enroll_join_list",
-		"projects/gongyi/pages/admin/enroll/export/admin_enroll_export" ,
+		"projects/gongyi/pages/admin/enroll/export/admin_enroll_export",
 		"cmpts/public/form/form_set/field/form_set_field",
-		"cmpts/public/form/form_show/content/form_show_content"
+		"cmpts/public/form/form_show/content/form_show_content",
+		"projects/gongyi/pages/my/rank/rank"
 	],
 	"window": {
 		"backgroundColor": "#f1f1f1",
@@ -51,7 +52,7 @@
 				"text": "活动",
 				"iconPath": "/projects/gongyi/images/tabbar/enroll.png",
 				"selectedIconPath": "/projects/gongyi/images/tabbar/enroll_cur.png"
-			}, 
+			},
 			{
 				"pagePath": "projects/gongyi/pages/my/index/my_index",
 				"text": "我的",
@@ -59,7 +60,7 @@
 				"selectedIconPath": "/projects/gongyi/images/tabbar/my_cur.png"
 			}
 		]
-	}, 
+	},
 	"permission": {
 		"scope.userLocation": {
 			"desc": "获取你当前位置信息用于小程序位置接口的效果展示"

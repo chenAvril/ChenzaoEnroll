@@ -10,10 +10,10 @@
 					<view class="mao">：</view>
 					<view class="content text-admin  text-l">{{user.USER_NAME}} </view>
 				</view>
-				<view class="info-item" bindtap="url" data-type="phone" data-url="{{user.USER_MOBILE}}">
+				<view class="info-item" data-type="phone" data-url="{{user.USER_MOBILE}}">
 					<view class="title">手机号码</view>
 					<view class="mao">：</view>
-					<view class="content">{{user.USER_MOBILE}} <text class="icon-phone text-l margin-left-xs"></text></view>
+					<view class="content">{{user.USER_MOBILE}}</view>
 				</view>
 				<view class="info-item">
 					<view class="title">注册时间</view>

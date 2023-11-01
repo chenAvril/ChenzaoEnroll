@@ -29,9 +29,9 @@
 						<view class="content">{{item.USER_CHECK_REASON||'未填写'}}</view>
 					</view>
 					<view class="info-item" bindtap="url" data-type="phone" data-url="{{item.USER_MOBILE}}">
-						<view class="title">手机</view>
+						<view class="title">手机号码</view>
 						<view class="mao">：</view>
-						<view class="content">{{item.USER_MOBILE||'未填写'}} <text wx:if="{{item.USER_MOBILE}}" class="icon-phone margin-left-s"></text></view>
+						<view class="content">{{item.USER_MOBILE||'未填写'}}</view>
 					</view>
 
 					<view class="info-item">

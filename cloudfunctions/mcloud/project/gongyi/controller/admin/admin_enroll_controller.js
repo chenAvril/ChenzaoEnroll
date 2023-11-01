@@ -391,6 +391,7 @@ class AdminEnrollController extends BaseProjectAdminController {
 
 		// 数据校验
 		let rules = {
+			title: 'string',
 			enrollId: 'id|must',
 			status: 'int|must|default=1'
 		};

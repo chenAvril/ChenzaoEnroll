@@ -12,8 +12,8 @@
 		<!-- List Begin -->
 		<view class="join-list">
 			<view wx:if="{{dataList && dataList.total }}" class="load text-grey">共有{{dataList.total}}条符合条件记录
-				<text wx:if="{{isAllFold}}" bindtap="bindUnFoldAllTap" class="margin-left-xs icon-unfold  text-admin">全部展开</text>
-				<text wx:else bindtap="bindFoldAllTap" class="margin-left-xs icon-fold  text-admin">全部收起</text>
+				<!-- <text wx:if="{{isAllFold}}" bindtap="bindUnFoldAllTap" class="margin-left-xs icon-unfold  text-admin">全部展开</text>
+				<text wx:else bindtap="bindFoldAllTap" class="margin-left-xs icon-fold  text-admin">全部收起</text> -->
 			</view>
 
 			<view class="item" wx:for="{{dataList.list}}" wx:key="key">

@@ -59,7 +59,6 @@ Page({
 		pageHelper.url(e, this);
 	},
 
-
 	bindCommListCmpt: function (e) {
 		pageHelper.commListListener(this, e);
 	},

@@ -8,7 +8,7 @@ const util = require('../utils/util.js');
 const dataUtil = require('../utils/data_util.js');
 
 const cloudBase = require('../cloud/cloud_base.js');
-const MAX_RECORD_SIZE = 1000;
+const MAX_RECORD_SIZE = 9999;
 const DEFAULT_RECORD_SIZE = 20;
 
 const cloud = cloudBase.getCloud();

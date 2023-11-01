@@ -1,7 +1,7 @@
 const AdminBiz = require('../../../../../../comm/biz/admin_biz.js');
-const pageHelper = require('../../../../../../helper/page_helper.js'); 
-const cloudHelper = require('../../../../../../helper/cloud_helper.js'); 
-const fileHelper = require('../../../../../../helper/file_helper.js'); 
+const pageHelper = require('../../../../../../helper/page_helper.js');
+const cloudHelper = require('../../../../../../helper/cloud_helper.js');
+const fileHelper = require('../../../../../../helper/file_helper.js');
 
 Page({
 
@@ -9,9 +9,9 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		title: '', 
+		title: '',
 		url: '',
-		time: '', 
+		time: '',
 		status: 1
 	},
 
@@ -48,7 +48,7 @@ Page({
 
 		this.setData({
 			isLoad: true,
-			url: data.url 
+			url: data.url
 		})
 
 	},
@@ -90,7 +90,7 @@ Page({
 		wx.stopPullDownRefresh();
 	},
 
-	bindOpenTap:function(e) {
+	bindOpenTap: function (e) {
 		fileHelper.openDoc('名单', this.data.url);
 	},
 
@@ -112,11 +112,12 @@ Page({
 			}
 
 			let params = {
-				enrollId: this.data.enrollId, 
+				title: this.data.title,
+				enrollId: this.data.enrollId,
 				status: this.data.status
 			}
 
-			await cloudHelper.callCloudData('admin/enroll_join_data_export', params, options).then(res => {  
+			await cloudHelper.callCloudData('admin/enroll_join_data_export', params, options).then(res => {
 				this._loadDetail(0);
 				pageHelper.showModal('数据文件生成成功(' + res.total + '条记录), 请点击「直接打开」按钮或者复制文件地址下载');
 
@@ -135,7 +136,7 @@ Page({
 			}
 			await cloudHelper.callCloudData('admin/enroll_join_data_del', {}, options).then(res => {
 				this.setData({
-					url: '', 
+					url: '',
 				});
 				pageHelper.showSuccToast('删除成功');
 			});

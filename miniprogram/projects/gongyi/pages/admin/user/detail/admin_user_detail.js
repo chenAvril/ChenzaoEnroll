@@ -96,7 +96,5 @@ Page({
 			user
 		})
 	},
-	url(e) {
-		pageHelper.url(e, this);
-	}
+
 })
