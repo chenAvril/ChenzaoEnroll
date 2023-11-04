@@ -1,2 +1,26 @@
-<!--projects/gongyi/pages/my/rank/rank.wxml-->
-<text>projects/gongyi/pages/my/rank/rank.wxml</text>
+<block wx:if="{{isLoad}}">
+	<cmpt-comm-list id="cmpt-comm-list" source='admin' type="admin-meet" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" route="admin/user_list" sortMenusDefaultIndex="0" topBottom="50" placeholder="搜索" bind:list="bindCommListCmpt">
+
+		<!-- List Begin -->
+		<view class="admin-comm-list">
+
+			<view class="myitem" wx:for="{{dataList.list}}" wx:key="key">
+
+				<view class="header">
+					<view class="left">积分：{{item.USER_POINT_LUYANG}}</view>
+					<view class="right">{{item.USER_NAME}}</view>
+
+				</view>
+				<view class="line"></view>
+			</view>
+		</view>
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'text-grey',dataList}}" />
+		<!--load end-->
+
+	</cmpt-comm-list>
+
+</block>

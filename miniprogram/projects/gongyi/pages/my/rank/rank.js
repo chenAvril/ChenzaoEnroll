@@ -1,4 +1,12 @@
 // projects/gongyi/pages/my/rank/rank.js
+const AdminBiz = require('../../../../../comm/biz/admin_biz.js');
+const pageHelper = require('../../../../../helper/page_helper.js');
+const cacheHelper = require('../../../../../helper/cache_helper.js');
+const cloudHelper = require('../../../../../helper/cloud_helper.js');
+const projectSetting = require('../../../public/project_setting.js');
+
+const CACHE_USER_CHECK_REASON = 'CACHE_USER_CHECK_REASON';
+
 Page({
 
 	/**
@@ -11,8 +19,9 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad(options) {
-
+	onLoad: async function (options) {
+		//设置搜索菜单
+		await this._getSearchMenu();
 	},
 
 	/**
@@ -43,24 +52,53 @@ Page({
 
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh() {
-
+	bindCommListCmpt: function (e) {
+		pageHelper.commListListener(this, e);
 	},
 
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom() {
+	_getSearchMenu: async function () {
 
-	},
+		let cateList = projectSetting.ENROLL_CATE;
 
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage() {
+		let sortMenus = [];
+		cateList.forEach((item) => {
+			switch (item.id) {
+				case 1:
+					sortMenus.push({
+						label: item.title,
+						type: 'sort',
+						value: 'USER_POINT_LUYANG|asc'
+					}, );
+					break;
+				case 2:
+					sortMenus.push({
+						label: item.title,
+						type: 'sort',
+						value: 'USER_POINT_LUYANG|desc'
+					}, );
+					break;
+				case 3:
+					sortMenus.push({
+						label: item.title,
+						type: 'sort',
+						value: 'USER_POINT_LUYANG|asc'
+					}, );
+					break;
+			}
+
+
+		});
+
+		this.setData({
+			search: '',
+			sortMenus,
+			isLoad: true,
+			_params: {
+				sortType: "sort",
+				sortVal: "USER_POINT_LUYANG|asc",
+			},
+		})
+
 
 	}
 })
